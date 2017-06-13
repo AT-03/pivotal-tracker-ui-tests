@@ -1,0 +1,60 @@
+group 'org.fundacionjala.pivotal'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+
+    compile 'io.rest-assured:rest-assured:3.0.3'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.4.0'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.4.0'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.4.0'
+
+    testCompile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+    testCompile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+    testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
+}
+
+// Checkstyle configuration
+checkstyle {
+    toolVersion = '6.14.1'
+}
+
+// FindBugs configuration
+findbugs {
+    toolVersion = "3.0.1"
+}
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+// PMD Configuration
+pmd {
+    toolVersion = '5.4.1'
+    ruleSets = ["java-basic"]
+}
+tasks.withType(Pmd) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+test {
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+    }
+}
