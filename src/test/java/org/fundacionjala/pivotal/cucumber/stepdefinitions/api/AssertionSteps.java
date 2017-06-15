@@ -3,6 +3,10 @@ package org.fundacionjala.pivotal.cucumber.stepdefinitions.api;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import java.util.List;
+<<<<<<< HEAD
+=======
+import java.util.Map;
+>>>>>>> 25d6aba... BuildEndpoint refactored, Project and Task API feature files/tests added
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
