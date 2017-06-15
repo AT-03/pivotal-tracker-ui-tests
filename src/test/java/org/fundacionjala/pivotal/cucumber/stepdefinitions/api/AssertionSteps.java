@@ -28,6 +28,23 @@ public class AssertionSteps {
     }
 
     /**
+     * To get project object by name.
+     *
+     * @param endpoint The endpoint
+     * @param name     The name to search
+     * @return Map<String, ?></>
+     */
+    public Map<String, ?> getObjectByName(final String endpoint, final String name) {
+//        ArrayList<Map<String, ?>> jsonArr = from(response.asString()).get("");
+//        for (Map<String, ?> obj : jsonArr) {
+//            if (obj.get("name").toString().equals(name)) {
+//                return obj;
+//            }
+//        }
+        return null;
+    }
+
+    /**
      * To get expect status code.
      *
      * @param statusCode The endpoint to send
