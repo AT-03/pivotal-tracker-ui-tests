@@ -27,7 +27,7 @@ public class Hooks {
         for (Iterator<StoreVariables> iter = Utils.getStoreVariables().listIterator(); iter.hasNext();) {
             StoreVariables var = iter.next();
             if (var.getName().contains("Project")) {
-                RequestManager.delete(Utils.buildEndpoint("/projects/[" + var.getName() + ".id]"));
+                RequestManager.delete(Utils.buildEndpoint(String.format("/projects/[%s.id]", var.getName())));
                 Utils.getStoreVariables().remove(var);
                 iter.remove();
             }
@@ -49,8 +49,7 @@ public class Hooks {
   public void resetworkspace() {
     for (StoreVariables var : Utils.getStoreVariables()) {
       if (var.getName().contains("Workspace")) {
-        //var.getAttribute("i")
-        RequestManager.delete(Utils.buildEndpoint("/my/workspaces/[" + var.getName() + ".id]"));
+        RequestManager.delete(Utils.buildEndpoint(String.format("/my/workspaces/[%s.id]", var.getName())));
       }
     }
   }
