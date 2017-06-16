@@ -3,10 +3,6 @@ package org.fundacionjala.pivotal.cucumber.stepdefinitions.api;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import java.util.List;
-<<<<<<< HEAD
-=======
-import java.util.Map;
->>>>>>> 25d6aba... BuildEndpoint refactored, Project and Task API feature files/tests added
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -25,23 +21,6 @@ public class AssertionSteps {
      */
     public AssertionSteps(final RequestSteps steps) {
         this.steps = steps;
-    }
-
-    /**
-     * To get project object by name.
-     *
-     * @param endpoint The endpoint
-     * @param name     The name to search
-     * @return Map<String, ?></>
-     */
-    public Map<String, ?> getObjectByName(final String endpoint, final String name) {
-//        ArrayList<Map<String, ?>> jsonArr = from(response.asString()).get("");
-//        for (Map<String, ?> obj : jsonArr) {
-//            if (obj.get("name").toString().equals(name)) {
-//                return obj;
-//            }
-//        }
-        return null;
     }
 
     /**
