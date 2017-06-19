@@ -3,6 +3,7 @@ package org.fundacionjala.pivotal.cucumber.api;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
@@ -13,7 +14,8 @@ import static io.restassured.RestAssured.given;
  */
 public final class RequestManager {
 
-    private static RequestSpecification requestSpecification = RestConnection.getInstance().getRequestSpecification();
+    private static final RequestSpecification REQUEST_SPECIFICATION =
+            RestConnection.getInstance().getRequestSpecification();
 
     /**
      * Private constructor.
@@ -29,7 +31,7 @@ public final class RequestManager {
      */
     public static Response get(final String endpoint) {
         return given()
-                .spec(requestSpecification)
+                .spec(REQUEST_SPECIFICATION)
                 .get(endpoint);
     }
 
@@ -42,8 +44,8 @@ public final class RequestManager {
      */
     public static Response post(final String endpoint, final String body) {
         return given()
-                .spec(requestSpecification)
-                .header("Content-Type", ContentType.JSON)
+                .spec(REQUEST_SPECIFICATION)
+                .contentType(ContentType.JSON)
                 .body(body)
                 .post(endpoint);
     }
@@ -57,7 +59,7 @@ public final class RequestManager {
      */
     public static Response post(final String endpoint, final Map<String, String> body) {
         return given()
-                .spec(requestSpecification)
+                .spec(REQUEST_SPECIFICATION)
                 .params(body)
                 .post(endpoint);
     }
@@ -72,8 +74,8 @@ public final class RequestManager {
     public static Response put(final String endpoint, final String body) {
 
         return given()
-                .spec(requestSpecification)
-                .header("Content-type", ContentType.JSON)
+                .spec(REQUEST_SPECIFICATION)
+                .contentType(ContentType.JSON)
                 .body(body)
                 .put(endpoint);
     }
@@ -87,7 +89,7 @@ public final class RequestManager {
      */
     public static Response put(final String endpoint, final Map<String, String> body) {
         return given()
-                .spec(requestSpecification)
+                .spec(REQUEST_SPECIFICATION)
                 .params(body)
                 .put(endpoint);
     }
@@ -100,7 +102,7 @@ public final class RequestManager {
      */
     public static Response delete(final String endpoint) {
         return given()
-                .spec(requestSpecification)
+                .spec(REQUEST_SPECIFICATION)
                 .delete(endpoint);
     }
 
