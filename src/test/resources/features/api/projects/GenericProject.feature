@@ -49,7 +49,8 @@ Feature: GenericProject
   Scenario: Create Project already exists
     Given I request "POST" "/projects" with:
       | name | projectTest41 |
-    Then I request "POST" "/projects" with:
+    And I stored as [Project1]
+    When I request "POST" "/projects" with:
       | name | projectTest41 |
     Then I expect status code 400
     And the "error" should be "One or more request parameters was missing or invalid."

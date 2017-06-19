@@ -24,11 +24,11 @@ public class Hooks {
      */
     @After("@deleteProject")
     public void setup() {
-        for (Iterator<StoreVariables> iter = Utils.getStoreVariables().listIterator(); iter.hasNext();) {
-            StoreVariables var = iter.next();
-            if (var.getName().contains("Project")) {
-                RequestManager.delete(Utils.buildEndpoint(String.format("/projects/[%s.id]", var.getName())));
-                Utils.getStoreVariables().remove(var);
+        Iterator<StoreVariables> iter = Utils.getStoreVariables().iterator();
+        while (iter.hasNext()) {
+            StoreVariables variable = iter.next();
+            if (variable.getName().contains("Project")) {
+                RequestManager.delete(Utils.buildEndpoint(String.format("/projects/[%s.id]", variable.getName())));
                 iter.remove();
             }
         }
@@ -47,10 +47,13 @@ public class Hooks {
    */
   @After("@deleteWorkspace")
   public void resetworkspace() {
-    for (StoreVariables var : Utils.getStoreVariables()) {
-      if (var.getName().contains("Workspace")) {
-        RequestManager.delete(Utils.buildEndpoint(String.format("/my/workspaces/[%s.id]", var.getName())));
+      Iterator<StoreVariables> iter = Utils.getStoreVariables().iterator();
+      while (iter.hasNext()) {
+          StoreVariables variable = iter.next();
+          if (variable.getName().contains("Workspace")) {
+              RequestManager.delete(Utils.buildEndpoint(String.format("/my/workspace/[%s.id]", variable.getName())));
+              iter.remove();
+          }
       }
-    }
   }
 }
