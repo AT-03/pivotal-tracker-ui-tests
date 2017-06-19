@@ -31,6 +31,11 @@ public class Dashboard extends AbstractBasePage {
   @FindBy(css = "a.projectTileHeader__projectName")
   private List<WebElement> projectNameList;
 
+  /**
+   * Locator.
+   */
+  @FindBy(css = "div.Dashboard__Tabs span")
+  private List<WebElement> workSpacesLink;
 
   /**
    * click on create project button.
@@ -55,6 +60,13 @@ public class Dashboard extends AbstractBasePage {
    */
   public void selecAproject(final String projectName) {
     CommonActions.selectAnElement(projectNameList, projectName).click();
+  }
+
+  /**
+   * Click on workspaces.
+   */
+  public void clicOnWorkSpaces() {
+    CommonActions.selectAnElement(workSpacesLink, "Workspaces").click();
   }
 
 }
