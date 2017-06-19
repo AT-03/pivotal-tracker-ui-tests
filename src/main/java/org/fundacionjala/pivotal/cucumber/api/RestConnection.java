@@ -10,9 +10,9 @@ import org.fundacionjala.pivotal.cucumber.utils.Environment;
  */
 public final class RestConnection {
 
+    public static final String BASE_URI = "baseURI";
     private static final String X_TRACKER_TOKEN_HEADER = "X-TrackerToken";
     private static final Environment ENVIRONMENT = Environment.getInstance();
-
     private static final int PORT;
     private static final String IP;
     private static final String TOKEN;
@@ -31,7 +31,7 @@ public final class RestConnection {
      * common parameters: proxy, header and baseUri.
      */
     private RestConnection() {
-        RestAssured.baseURI = ENVIRONMENT.getPropertyValue("baseURI");
+        RestAssured.baseURI = ENVIRONMENT.getPropertyValue(BASE_URI);
 
         requestSpecification = new RequestSpecBuilder()
                 .addHeader(X_TRACKER_TOKEN_HEADER, TOKEN)
