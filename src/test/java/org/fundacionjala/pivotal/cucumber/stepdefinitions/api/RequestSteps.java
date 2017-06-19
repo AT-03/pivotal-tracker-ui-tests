@@ -4,10 +4,11 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
-import java.util.Map;
 import org.fundacionjala.pivotal.cucumber.api.RequestManager;
 import org.fundacionjala.pivotal.cucumber.utils.StoreVariables;
 import org.fundacionjala.pivotal.cucumber.utils.Utils;
+
+import java.util.Map;
 
 /**
  * Created by Administrator on 6/1/2017.
@@ -19,6 +20,7 @@ public class RequestSteps {
 
     /**
      * To send GET request.
+     *
      * @param endpoint The endpoint to send
      */
     @When("^I request GET \"([^\"]*)\"$")
@@ -62,6 +64,7 @@ public class RequestSteps {
 
     /**
      * To store value.
+     *
      * @param variableName The variable's name to store
      */
     @And("^I stored as \\[([^\"]*)\\]$")
