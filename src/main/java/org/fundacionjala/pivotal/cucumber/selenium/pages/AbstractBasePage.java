@@ -11,31 +11,31 @@ import org.openqa.selenium.support.PageFactory;
  */
 public abstract class AbstractBasePage {
 
-  private WebDriver webDriver;
+    private WebDriver webDriver;
 
-  /**
-   * HomePage constructor.
-   */
-  public AbstractBasePage() {
-    this.setWebDriver(DriverManager.getInstance().getDriver());
-    PageFactory.initElements(getWebDriver(), this);
-  }
+    /**
+     * HomePage constructor.
+     */
+    public AbstractBasePage() {
+        this.setWebDriver(DriverManager.getInstance().getDriver());
+        PageFactory.initElements(getWebDriver(), this);
+    }
 
-  /**
-   * The method webdriver().
-   *
-   * @return driver data.
-   */
-  public WebDriver getWebDriver() {
-    return webDriver;
-  }
+    /**
+     * The method webdriver().
+     *
+     * @return driver data.
+     */
+    public WebDriver getWebDriver() {
+        return webDriver;
+    }
 
-  /**
-   * This is setWebDriver.
-   *
-   * @param webDriver data
-   */
-  public void setWebDriver(final WebDriver webDriver) {
-    this.webDriver = webDriver;
-  }
+    /**
+     * This is setWebDriver.
+     *
+     * @param webDriver data
+     */
+    public void setWebDriver(final WebDriver webDriver) {
+        this.webDriver = webDriver;
+    }
 }
