@@ -61,7 +61,7 @@ public class Hooks {
         while (iter.hasNext()) {
             StoreVariables variable = iter.next();
             if (variable.getName().contains("Workspace")) {
-                delete(Utils.buildEndpoint(String.format("/my/workspace/[%s.id]", variable.getName())));
+                delete(Utils.buildEndpoint(String.format("/my/workspaces/[%s.id]", variable.getName())));
                 iter.remove();
             }
         }

@@ -39,8 +39,14 @@ public class RequestSteps {
     @When("^I request \"(POST|PUT)\" \"([^\"]*)\" with:$")
     public void iRequestPOSTWith(final String request, final String endpoint, final Map<String, String> body) {
         String endpoint1 = Utils.buildEndpoint(endpoint);
-        response = request.equals("POST") ? RequestManager.post(endpoint1, body)
-                : RequestManager.put(endpoint1, body);
+        if (Utils.verifyArray(body)) {
+
+            response = request.equals("POST") ? RequestManager.post(endpoint1, Utils.convertJson(body))
+                    : RequestManager.put(endpoint1, Utils.convertJson(body));
+        } else {
+            response = request.equals("POST") ? RequestManager.post(endpoint1, body)
+                    : RequestManager.put(endpoint1, body);
+        }
     }
 
     /**
