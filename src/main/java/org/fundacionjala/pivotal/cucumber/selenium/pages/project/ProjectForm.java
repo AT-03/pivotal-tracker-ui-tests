@@ -22,6 +22,7 @@ import static org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectF
 public class ProjectForm extends AbstractBasePage {
     @FindBy(css = ".tc-form__input")
     private WebElement projectNameTextField;
+
     @FindBy(css = ".tc-account-selector__header")
     private WebElement accountDropDownList;
 
@@ -43,6 +44,13 @@ public class ProjectForm extends AbstractBasePage {
     private WebElement createAccountButtonOptionDropDownList;
     @FindBy(css = "input.tc-account-creator__name")
     private WebElement newAccountProjectTextField;
+
+
+    @FindBy(css = ".tc-project-name__label .tc-form__input--error-message")
+    private WebElement messageErrorProject;
+
+    @FindBy(css = ".tc-account-chooser .tc-form__input--error-message>span")
+    private WebElement messageErrorAccount;
 
     /**
      * Click on the Element.
@@ -124,4 +132,20 @@ public class ProjectForm extends AbstractBasePage {
         return strategyMap;
     }
 
+    /**
+     *This notice the message error project.
+     * @return String message error require
+     */
+    public String getMessageErrorProject() {
+
+        return messageErrorProject.getText();
+    }
+    /**
+     *This notice the message error account.
+     * @return String message error require
+     */
+    public String getMessageErrorAccount() {
+
+        return messageErrorAccount.getText();
+    }
 }

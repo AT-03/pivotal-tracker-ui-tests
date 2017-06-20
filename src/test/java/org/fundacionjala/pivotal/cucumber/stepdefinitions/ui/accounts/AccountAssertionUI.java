@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import java.util.Map;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navegator;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectFormSetting;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectManagement;
 import org.fundacionjala.pivotal.cucumber.stepdefinitions.ui.commonsteps.CommonStepsUI;
@@ -51,7 +52,25 @@ public class AccountAssertionUI {
         final String itemAccount = settingMap.get(ACCOUNT);
         boolean resultActual = CommonStepsUI.getAccount().
                 findAccount(CommonStepsUI.getAccount().getNameAccountList(), itemAccount);
+        Navegator.goToDashboard();
         assertTrue(resultActual);
+
+    }
+
+    /**
+     * this is the method error message account.
+     *
+     * @param messageProject require field
+     * @param messageAccount require field
+     */
+    @Then("^The project should to message as \"([^\"]*)\" and the account \"([^\"]*)\"$")
+    public void theProjectShouldToMessageAsAndTheAccount(final String messageProject, final String messageAccount) {
+        ProjectForm projectForm = new ProjectForm();
+        String messageErrorProject = projectForm.getMessageErrorProject();
+        String messageErrorAccount = projectForm.getMessageErrorAccount();
+        Navegator.goToDashboard();
+        assertEquals(messageProject, messageErrorProject);
+        assertEquals(messageAccount, messageErrorAccount);
 
     }
 }

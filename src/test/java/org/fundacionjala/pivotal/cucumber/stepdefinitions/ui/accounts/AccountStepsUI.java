@@ -63,4 +63,5 @@ public class AccountStepsUI {
         manageAccount.waitPage();
         Navegator.goToDashboard();
     }
+
 }
