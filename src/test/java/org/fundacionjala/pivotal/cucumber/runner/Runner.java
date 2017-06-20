@@ -16,7 +16,7 @@ import org.testng.annotations.AfterClass;
                 "junit:target/test-report.xml"
         },
         features = {
-                "src/test/resources/features/ui/accounts"
+                "src/test/resources/features/ui"
         },
         glue = {
                 "org.fundacionjala.pivotal.cucumber"

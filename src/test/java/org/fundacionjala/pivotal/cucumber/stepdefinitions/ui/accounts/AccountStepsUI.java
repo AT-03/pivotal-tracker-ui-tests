@@ -39,7 +39,7 @@ public class AccountStepsUI {
         settingMap = newSettingMap;
         Dashboard dashboardPage = new Dashboard();
         ProjectForm projectForm = dashboardPage.clickOnCreateProjectButton();
-        projectForm.setConfiguration(newSettingMap);
+        projectForm.setConfiguration(settingMap);
         projectForm.clickOnCreateAccountButton();
     }
 

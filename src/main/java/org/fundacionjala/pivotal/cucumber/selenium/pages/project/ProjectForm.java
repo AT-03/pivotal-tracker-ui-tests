@@ -133,15 +133,18 @@ public class ProjectForm extends AbstractBasePage {
     }
 
     /**
-     *This notice the message error project.
+     * This notice the message error project.
+     *
      * @return String message error require
      */
     public String getMessageErrorProject() {
 
         return messageErrorProject.getText();
     }
+
     /**
-     *This notice the message error account.
+     * This notice the message error account.
+     *
      * @return String message error require
      */
     public String getMessageErrorAccount() {
