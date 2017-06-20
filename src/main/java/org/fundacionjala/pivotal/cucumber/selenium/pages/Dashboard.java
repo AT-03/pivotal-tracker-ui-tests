@@ -1,6 +1,7 @@
 package org.fundacionjala.pivotal.cucumber.selenium.pages;
 
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectForm;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -14,7 +15,7 @@ public class Dashboard extends AbstractBasePage {
     /**
      * Locator.
      */
-    @FindBy(id = "ProjectsPaneUpdated OpenCreateProjectModal-button")
+    @FindBy(id = "create-project-button")
     private WebElement createProjectButton;
 
     /**
@@ -43,9 +44,11 @@ public class Dashboard extends AbstractBasePage {
 
     /**
      * click on create project button.
+     * @return ProjectForm project Form instance
      */
-    public void clickOnCreateProjectButton() {
+    public ProjectForm clickOnCreateProjectButton() {
         CommonActions.clickElement(createProjectButton);
+        return new ProjectForm();
     }
 
     /**

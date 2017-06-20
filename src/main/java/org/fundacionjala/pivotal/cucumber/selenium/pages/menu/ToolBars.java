@@ -1,5 +1,4 @@
-package org.fundacionjala.pivotal.cucumber.selenium.menu;
-
+package org.fundacionjala.pivotal.cucumber.selenium.pages.menu;
 
 import java.util.concurrent.TimeUnit;
 import org.apache.log4j.LogManager;
@@ -7,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.fundacionjala.pivotal.cucumber.selenium.browser.DriverManager;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.SignIn;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.accounts.Accounts;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navegator;
 import org.fundacionjala.pivotal.cucumber.utils.Environment;
@@ -22,7 +22,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class ToolBars extends AbstractBasePage {
     private static final int MIN_TIMEOUT = 3;
     private static final Logger LOGGER = LogManager
-            .getLogger(ToolBars.class);
+            .getLogger(org.fundacionjala.pivotal.cucumber.selenium.menu.ToolBars.class);
 
     /**
      * Locate element.
@@ -53,6 +53,12 @@ public class ToolBars extends AbstractBasePage {
      */
     @FindBy(css = ".tc_header_item.tc_header_logo")
     private WebElement toggleBar;
+
+    /**
+     * Locate element.
+     */
+    @FindBy(css = "a[href='/accounts']")
+    private WebElement accountDropDownItem;
 
     /**
      * Method to get the user name.
@@ -91,8 +97,7 @@ public class ToolBars extends AbstractBasePage {
      */
     public void clickUserMenu() {
         try {
-            DriverManager.getInstance().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(userMenu));
+            DriverManager.getInstance().getWait().until(ExpectedConditions.elementToBeClickable(userMenu));
             CommonActions.clickOnaHiddenElement(userMenu);
         } catch (WebDriverException e) {
             LOGGER.warn("The userMenu is delaying to much in loading");
@@ -110,6 +115,16 @@ public class ToolBars extends AbstractBasePage {
         this.clickUserMenu();
         logOutButton.click();
         return new SignIn();
+    }
+
+    /**
+     * This method do click on "Account" DropDownItem.
+     *
+     * @return {@link Accounts}
+     */
+    public Accounts clickAccountDropDownItem() {
+        CommonActions.clickElement(accountDropDownItem);
+        return new Accounts();
     }
 
 }

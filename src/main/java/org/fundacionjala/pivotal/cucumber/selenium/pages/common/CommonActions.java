@@ -17,7 +17,15 @@ public final class CommonActions {
      */
     private CommonActions() {
     }
-
+    /**
+     * This method waits and clear the element.
+     *
+     * @param webElement Element to wait and clear.
+     */
+    public static void clearTextField(final WebElement webElement) {
+        DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
+        webElement.clear();
+    }
     /**
      * setText.
      *
@@ -98,6 +106,17 @@ public final class CommonActions {
      */
     public static boolean assertAndVerifyElement(final WebElement element) {
         return element.isEnabled();
+    }
+
+    /**
+     * This method waits and clickElement the element.
+     *
+     * @param webElement Element to wait and clickElement.
+     * @return text to element.
+     */
+    public static String getText(final WebElement webElement) {
+        DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
+        return webElement.getText();
     }
 }
 

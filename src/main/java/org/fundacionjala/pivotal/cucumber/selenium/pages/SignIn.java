@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Administrator on 6/14/2017.
  */
-public class SignIn {
+public class SignIn extends AbstractBasePage {
     @FindBy(id = "credentials_username")
     private WebElement emailTextField;
 
@@ -20,6 +20,7 @@ public class SignIn {
 
     @FindBy(name = "action")
     private WebElement nextSigninButton;
+
     /**
      * Locate element.
      */
@@ -78,7 +79,6 @@ public class SignIn {
      */
     public static Dashboard verifyTheLoginOfUser(final String userName,
                                                  final String password) {
-
         HomePage homePage = new HomePage();
         Dashboard dashboard = new Dashboard();
         try {
@@ -91,9 +91,7 @@ public class SignIn {
             }
         } catch (WebDriverException e) {
             DriverManager.getInstance().getDriver().get(Environment.getInstance().getBaseUrl());
-            homePage.clickSigninLink();
             dashboard = loginAs(userName, password);
-
         }
         return dashboard;
 
@@ -107,6 +105,7 @@ public class SignIn {
      * @return The login to Mach2 application.
      */
     public static Dashboard loginAs(final String userName, final String password) {
+
         HomePage homePage = new HomePage();
         SignIn signIn = homePage.clickSigninLink();
         signIn.setEmailTextField(userName);
@@ -122,8 +121,9 @@ public class SignIn {
      */
     public static Dashboard loginOtherUser() {
         String userNameValue = Environment.getInstance().getUser();
-
         String passwordValue = Environment.getInstance().getPassword();
+
+
         return verifyTheLoginOfUser(Environment.getInstance().getPropertyValue(userNameValue),
                 Environment.getInstance().getPropertyValue(passwordValue));
     }
