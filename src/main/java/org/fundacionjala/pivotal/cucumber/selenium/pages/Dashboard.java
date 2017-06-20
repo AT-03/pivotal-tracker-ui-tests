@@ -3,6 +3,7 @@ package org.fundacionjala.pivotal.cucumber.selenium.pages;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectForm;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -43,6 +44,18 @@ public class Dashboard extends AbstractBasePage {
     private List<WebElement> workSpacesLink;
 
     /**
+     * Locator.
+     */
+    @FindBy(css = "a.projectTileHeader__projectName.projectTileHeader__projectName--active")
+    private WebElement selectProject;
+
+    @FindBy(css = "[placeholder='Search project']")
+    private WebElement searchProjectTextField;
+
+    @FindBy(css = "[data-type='search'] div.container section div div div.story header a.expander")
+    @CacheLookup
+    private WebElement deployStoryForUpdate;
+    /**
      * click on create project button.
      * @return ProjectForm project Form instance
      */
@@ -76,4 +89,12 @@ public class Dashboard extends AbstractBasePage {
         CommonActions.selectAnElement(workSpacesLink, "Workspaces").click();
     }
 
+    /**
+     * Click on element.
+     * @return story Dashboard.
+     */
+    public StoryDashboard clickSelectProject() {
+        CommonActions.clickElement(selectProject);
+        return new StoryDashboard();
+    }
 }
