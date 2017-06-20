@@ -1,8 +1,10 @@
 package org.fundacionjala.pivotal.cucumber.stepdefinitions.ui.accounts;
 
-import cucumber.api.java.en.When;
 import java.util.Map;
+
+import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
+
 import org.fundacionjala.pivotal.cucumber.selenium.pages.Dashboard;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.accounts.ManageAccount;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navegator;
@@ -18,16 +20,6 @@ public class AccountStepsUI {
 
     private static final Logger LOGGER = Logger.getLogger(Environment.class.getSimpleName());
     private Map<ProjectFormSetting, String> settingMap;
-
-    /**
-     * This method deleted all account the project.
-     */
-    @When("^I delete all account the project$")
-    public void deleteAllAccountForProject() {
-
-        CommonStepsUI.getAccount().deleteAllAccounts(CommonStepsUI.getAccount().getManageAccountButtonList());
-        Navegator.goToDashboard();
-    }
 
     /**
      * This method added a new project.

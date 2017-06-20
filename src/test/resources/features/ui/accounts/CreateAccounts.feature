@@ -1,10 +1,9 @@
 Feature: Create Project with a account
 
-  @deleteProject
+  @deleteProject @deleteAllAccounts
   Scenario: Verify if we create a new project with setting by default.
   New account is create and privacy is private.
-    When I delete all account the project
-    And I added a new project
+    When I added a new project
       | PROJECT_NAME | Automation Project Test 01 |
       | ACCOUNT      | AutomationTestAT03-01      |
     Then Verify that a new project is created

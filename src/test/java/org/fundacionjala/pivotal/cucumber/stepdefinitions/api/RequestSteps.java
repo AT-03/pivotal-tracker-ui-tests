@@ -1,14 +1,15 @@
 package org.fundacionjala.pivotal.cucumber.stepdefinitions.api;
 
+import java.util.Map;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
+
 import org.fundacionjala.pivotal.cucumber.api.RequestManager;
 import org.fundacionjala.pivotal.cucumber.utils.StoreVariables;
 import org.fundacionjala.pivotal.cucumber.utils.Utils;
-
-import java.util.Map;
 
 /**
  * Created by Administrator on 6/1/2017.

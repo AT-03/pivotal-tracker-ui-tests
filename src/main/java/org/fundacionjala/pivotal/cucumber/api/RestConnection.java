@@ -10,16 +10,16 @@ import org.fundacionjala.pivotal.cucumber.utils.Environment;
  */
 public final class RestConnection {
 
-    public static final String BASE_URI = "baseURI";
+    private static final String BASE_URI = "baseURI";
     private static final String X_TRACKER_TOKEN_HEADER = "X-TrackerToken";
     private static final Environment ENVIRONMENT = Environment.getInstance();
-    private static final int PORT;
+    private static final String PORT;
     private static final String IP;
     private static final String TOKEN;
     private static RestConnection instance;
 
     static {
-        PORT = Integer.parseInt(ENVIRONMENT.getPropertyValue("proxyPort"));
+        PORT = ENVIRONMENT.getPropertyValue("proxyPort");
         IP = ENVIRONMENT.getPropertyValue("proxyIp");
         TOKEN = ENVIRONMENT.getPropertyValue("apiToken");
     }
@@ -37,8 +37,8 @@ public final class RestConnection {
                 .addHeader(X_TRACKER_TOKEN_HEADER, TOKEN)
                 .setRelaxedHTTPSValidation().build();
 
-        if (!(IP.isEmpty() && PORT == 0)) {
-            requestSpecification.proxy(IP, PORT);
+        if (!(IP.isEmpty() && PORT.isEmpty())) {
+            requestSpecification.proxy(IP, Integer.parseInt(PORT));
         }
     }
 
