@@ -55,8 +55,16 @@ public class Dashboard extends AbstractBasePage {
     @FindBy(css = "[data-type='search'] div.container section div div div.story header a.expander")
     @CacheLookup
     private WebElement deployStoryForUpdate;
+
+    /**
+     * Locator.
+     */
+    @FindBy(css = "#notice")
+    private WebElement deletionMessage;
+
     /**
      * click on create project button.
+     *
      * @return ProjectForm project Form instance
      */
     public ProjectForm clickOnCreateProjectButton() {
@@ -91,10 +99,22 @@ public class Dashboard extends AbstractBasePage {
 
     /**
      * Click on element.
+     *
      * @return story Dashboard.
      */
     public StoryDashboard clickSelectProject() {
         CommonActions.clickElement(selectProject);
         return new StoryDashboard();
     }
+
+    /**
+     * Verify the message.
+     *
+     * @param message is the message
+     * @return true or false.
+     */
+    public boolean verifyDeletionMessage(final String message) {
+        return CommonActions.verifyMessages(deletionMessage, message);
+    }
+
 }

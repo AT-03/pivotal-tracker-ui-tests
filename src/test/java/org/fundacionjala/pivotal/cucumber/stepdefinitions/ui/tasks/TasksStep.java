@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class TasksStep {
 
-    private  Dashboard dashboard;
+    private Dashboard dashboard;
     private  StoryDashboard storyDashboard;
     private List<String> strings = new ArrayList<>();
 
