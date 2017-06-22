@@ -15,10 +15,10 @@ import java.util.stream.Collectors;
  */
 public final class Utils {
 
+    public static final String BY_POINT = "\\.";
     private static final List<StoreVariables> STORE_VARIABLES = new ArrayList<StoreVariables>();
     private static final String REGEX_INSIDE_BRACKETS = "(?<=\\[)(.*?)(?=\\])";
     private static final String REGEX_BRACKETS = "[\\[\\]]";
-    public static final String BY_POINT = "\\.";
     private static final int LIMIT = 2;
     private static final int KEY = 1;
     private static final int VALUE = 0;

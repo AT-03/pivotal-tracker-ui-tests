@@ -7,7 +7,7 @@ import cucumber.api.java.en.When;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.Dashboard;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.SignIn;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.StoryDashboard;
-import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navegator;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navigator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -119,7 +119,7 @@ public class TasksStep {
 
     @And("^I go to Dashboard$")
     public void iGoToDashboard() {
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
     }
 
 }

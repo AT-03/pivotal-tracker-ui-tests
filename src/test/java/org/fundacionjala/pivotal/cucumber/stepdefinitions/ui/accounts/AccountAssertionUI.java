@@ -3,7 +3,7 @@ package org.fundacionjala.pivotal.cucumber.stepdefinitions.ui.accounts;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import java.util.Map;
-import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navegator;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectFormSetting;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectManagement;
@@ -48,11 +48,11 @@ public class AccountAssertionUI {
      */
     @And("^Verify the new account with his project$")
     public void verifyTheNewAccountWithHisProject() {
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
         final String itemAccount = settingMap.get(ACCOUNT);
         boolean resultActual = CommonStepsUI.getAccount().
                 findAccount(CommonStepsUI.getAccount().getNameAccountList(), itemAccount);
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
         assertTrue(resultActual);
 
     }
@@ -68,7 +68,7 @@ public class AccountAssertionUI {
         ProjectForm projectForm = new ProjectForm();
         String messageErrorProject = projectForm.getMessageErrorProject();
         String messageErrorAccount = projectForm.getMessageErrorAccount();
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
         assertEquals(messageProject, messageErrorProject);
         assertEquals(messageAccount, messageErrorAccount);
 

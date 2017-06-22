@@ -21,7 +21,7 @@ import org.testng.annotations.AfterClass;
         glue = {
                 "org.fundacionjala.pivotal.cucumber"
         },
-        tags = { "~@loginAt03"}
+        tags = {"~@loginAt03"}
 )
 public final class Runner extends AbstractTestNGCucumberTests {
 

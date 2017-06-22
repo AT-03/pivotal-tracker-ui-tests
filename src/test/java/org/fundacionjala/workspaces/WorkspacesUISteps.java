@@ -5,7 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.Dashboard;
-import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navegator;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.workspaces.WorkSpacesSettings;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.workspaces.WorkspaceMain;
 
@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 6/20/2017.
  */
-public class WorkspacesUIStepts {
+public class WorkspacesUISteps {
 
 
     private Dashboard dashBoard;
@@ -35,7 +35,7 @@ public class WorkspacesUIStepts {
      * @param workspaceMain      class
      */
 
-    public WorkspacesUIStepts(final Dashboard dashboard, final Workspaces workspaces, final WorkSpacesSettings
+    public WorkspacesUISteps(final Dashboard dashboard, final Workspaces workspaces, final WorkSpacesSettings
             workSpacesSettings, final WorkspaceMain workspaceMain) {
         this.dashBoard = dashboard;
         this.workSpaces = workspaces;
@@ -50,7 +50,7 @@ public class WorkspacesUIStepts {
      */
     @When("^I navigate to dashboard workspace and create a new worksapce as:$")
     public void iNavigateToDashboardWorkspaceAndCreateANewWorksapceAs(final Map<String, String> body) {
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
         workSpaces.clickOnCreateWorkspaceButton();
         workSpaces.setWorkspaceName(body.get("Name"));
@@ -64,11 +64,11 @@ public class WorkspacesUIStepts {
      */
     @Then("^\"([^\"]*)\" should be displayed in dashboard workspace$")
     public void shouldBeDisplayedInDashboardWorkspace(final String workspaceName) {
-        Navegator.goToDashboard();
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
+        Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
         workSpaces.selectAworkSpace(workspaceName);
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
         Assert.assertTrue(workSpaces.verifyIfAworkSpaceExist(workspaceName));
 
@@ -82,7 +82,7 @@ public class WorkspacesUIStepts {
      */
     @When("^I navigate dashboard workspace and update the \"([^\"]*)\" with \"([^\"]*)\"$")
     public void iNavigateDashboardWorkspaceAndUpdateTheWith(final String workspaceName, final String newName) {
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
         workSpacesSettings = workSpaces.editWorkSpace(workspaceName);
         workSpacesSettings.updateWorkSpaceName(newName);
@@ -116,7 +116,7 @@ public class WorkspacesUIStepts {
      */
     @And("^\"([^\"]*)\" should be displayed$")
     public void shouldBeDisplayed(final String workspaceName) {
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
         Assert.assertTrue(workSpaces.verifyIfAworkSpaceExist(workspaceName));
     }
@@ -128,7 +128,7 @@ public class WorkspacesUIStepts {
      */
     @And("^\"([^\"]*)\" should not be displayed$")
     public void shouldNotBeDisplayed(final String workspaceName) {
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
 //        Assert.assertFalse(workSpaces.verifyIfAworkSpaceExist(workspaceName));
     }
@@ -140,7 +140,7 @@ public class WorkspacesUIStepts {
      */
     @When("^I navigate dashboard workspace and delete the \"([^\"]*)\"$")
     public void iNavigateDashboardWorkspaceAndDeleteThe(final String workspaceName) {
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
         workSpaces.editWorkSpace(workspaceName);
         workSpacesSettings.clickOnDeleteLink();
@@ -166,7 +166,7 @@ public class WorkspacesUIStepts {
     @Then("^Error message should be \"([^\"]*)\"$")
     public void errorMessageShouldBe(final String errorMessage) {
         workSpaces.verifyWorkSpaceBankNameError(errorMessage);
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
     }
 
     /**
@@ -187,7 +187,7 @@ public class WorkspacesUIStepts {
     @And("^Error message below shoud be \"([^\"]*)\"$")
     public void errorMessageBelowShoudBe(final String errorMessage) {
         Assert.assertFalse(workSpacesSettings.verifyChangesSavedMessage(errorMessage));
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
     }
 
     /**
@@ -195,7 +195,7 @@ public class WorkspacesUIStepts {
      */
     @When("^I navigate to  workspace on the dashboard and i select a workspace$")
     public void iNavigateToWorkspaceOnTheDashboardAndISelectAWorkspace() {
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
     }
 
@@ -213,6 +213,6 @@ public class WorkspacesUIStepts {
         workspaceMain.choseMoreThanOneprojectsToAdd(new String[]
                 {data.get(0).get(0), data.get(0).get(1), data.get(0).get(2)});
         workspaceMain.clickOnSaveButton();
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
     }
 }

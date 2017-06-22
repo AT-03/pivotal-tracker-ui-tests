@@ -11,7 +11,8 @@ public class StoreVariables {
 
     /**
      * Constructor.
-     * @param name The name of variable
+     *
+     * @param name   The name of variable
      * @param values The variable's values
      */
     public StoreVariables(final String name, final Map<String, ?> values) {
@@ -21,6 +22,7 @@ public class StoreVariables {
 
     /**
      * To get values from object.
+     *
      * @return Map<Map, ?>
      */
     public Map<String, ?> getValues() {
@@ -29,6 +31,7 @@ public class StoreVariables {
 
     /**
      * Get specific key/attribute from map.
+     *
      * @param key The key to get.
      * @return String
      */
@@ -38,6 +41,7 @@ public class StoreVariables {
 
     /**
      * To return the object's name.
+     *
      * @return String
      */
     public String getName() {

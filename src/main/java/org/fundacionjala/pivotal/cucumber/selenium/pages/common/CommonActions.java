@@ -17,6 +17,7 @@ public final class CommonActions {
      */
     private CommonActions() {
     }
+
     /**
      * This method waits and clear the element.
      *
@@ -26,10 +27,11 @@ public final class CommonActions {
         DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
         webElement.clear();
     }
+
     /**
      * setText.
      *
-     * @param element webemet.
+     * @param element web element.
      * @param text    text to set
      */
     public static void setTextField(final WebElement element,
@@ -54,8 +56,8 @@ public final class CommonActions {
     /**
      * Click.
      *
-     * @param elementsList list of elemetns.
-     * @param selectItem   imtm.
+     * @param elementsList list of elements.
+     * @param selectItem   item.
      * @return webElement
      */
     public static WebElement selectAnElement(final List<WebElement> elementsList,
@@ -76,7 +78,7 @@ public final class CommonActions {
     /**
      * Click.
      *
-     * @param element to seelt
+     * @param element to see.
      */
     public static void clickOnaHiddenElement(final WebElement element) {
         DriverManager.getInstance().getWait()
@@ -87,7 +89,7 @@ public final class CommonActions {
     }
 
     /**
-     * Verify Messges.
+     * Verify Messages.
      *
      * @param element is a WebElement
      * @param message is the message that shows the application.
