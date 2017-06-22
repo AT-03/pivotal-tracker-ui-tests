@@ -12,7 +12,7 @@ public class GlobalLoginHook {
     /**
      * global hook for login.
      */
-    @Before
+    @Before("@loginAt03")
     public void loginToPivotal() {
 
             final String userName = Environment.getInstance().getUser();
