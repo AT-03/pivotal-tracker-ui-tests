@@ -123,14 +123,8 @@ public final class Utils {
      * @return boolean.
      */
     public static boolean verifyArray(final Map<String, String> body) {
+        return body.values().stream().filter(a -> a.contains(",")).count() > 0;
 
-        for (String pep : body.values()) {
-            if (pep.contains(",")) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
 }
