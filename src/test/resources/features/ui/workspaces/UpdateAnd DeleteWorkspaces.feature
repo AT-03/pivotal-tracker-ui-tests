@@ -11,8 +11,8 @@ Feature: Update delete
     Then Confirm message should be "Changes saved."
     And project name should be "WorkspaceNameChanged"
     And I stored as [WorkspaceUI]
-    And "NameChanged" should be displayed
-    And "TestWorkSpace" should not be displayed
+    And "WorkspaceNameChanged" should be displayed
+    And "TestWorkSpaces" should not be displayed
 
   Scenario: Delete a workspace
     When I navigate dashboard workspace and delete the "TestWorkSpaces"
