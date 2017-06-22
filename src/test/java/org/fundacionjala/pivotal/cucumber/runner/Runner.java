@@ -16,11 +16,12 @@ import org.testng.annotations.AfterClass;
                 "junit:target/test-report.xml"
         },
         features = {
-                "src/test/resources/features/ui"
+                "src/test/resources/features/ui/accounts"
         },
         glue = {
                 "org.fundacionjala.pivotal.cucumber"
-        }
+        },
+        tags = { "~@loginAt03"}
 )
 public final class Runner extends AbstractTestNGCucumberTests {
 

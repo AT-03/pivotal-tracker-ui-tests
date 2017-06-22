@@ -1,6 +1,6 @@
 Feature: Create Project with a account
 
-  @deleteProject @deleteAllAccounts
+  @loginAt03 @deleteProject @deleteAllAccounts
   Scenario: Verify if we create a new project with setting by default.
   New account is create and privacy is private.
     When I added a new project
