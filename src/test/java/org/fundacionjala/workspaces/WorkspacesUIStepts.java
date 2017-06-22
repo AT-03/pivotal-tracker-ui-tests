@@ -21,11 +21,17 @@ import java.util.Map;
 public class WorkspacesUIStepts {
 
 
-    private Dashboard dashBoard = new Dashboard();
-    private Workspaces workSpaces = new Workspaces();
-    private WorkSpacesSettings workSpacesSettings = new WorkSpacesSettings();
-    private WorkspaceMain workspaceMain = new WorkspaceMain();
+    private Dashboard dashBoard;
+    private Workspaces workSpaces;
+    private WorkSpacesSettings workSpacesSettings;
+    private WorkspaceMain workspaceMain;
 
+    public WorkspacesUIStepts(final Dashboard dashboard, final Workspaces workspaces, final WorkSpacesSettings workSpacesSettings, final WorkspaceMain workspaceMain) {
+        this.dashBoard = dashboard;
+        this.workSpaces = workspaces;
+        this.workSpacesSettings = workSpacesSettings;
+        this.workspaceMain = workspaceMain;
+    }
 
     /**
      * Metod.

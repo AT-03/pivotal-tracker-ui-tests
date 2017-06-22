@@ -1,7 +1,8 @@
 Feature: Update delete
 
   Background:
-    Given I request "POST" "/my/workspaces" with:
+    Given I login to pivotal as "User1"
+    When I request "POST" "/my/workspaces" with:
       | name | TestWorkSpaces |
     And I stored as [TestWorkSpaces]
 

@@ -1,5 +1,7 @@
 Feature: create a workspace
 
+  Background: 
+    Given  I login to pivotal as "user1"
 
   Scenario: create
     When  I navigate to dashboard workspace and create a new worksapce as:
