@@ -97,4 +97,15 @@ public class Dashboard extends AbstractBasePage {
         CommonActions.clickElement(selectProject);
         return new StoryDashboard();
     }
+
+    /**
+     * Click on the element.
+     *
+     * @return the instance of the story class
+     */
+
+    public Story clickSearchProject() {
+        CommonActions.clickElement(selectProject);
+        return new Story();
+    }
 }
