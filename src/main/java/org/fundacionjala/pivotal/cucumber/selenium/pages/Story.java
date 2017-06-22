@@ -249,6 +249,14 @@ public class Story extends AbstractBasePage {
     }
 
     /**
+     * Clear search story id.
+     */
+
+    public void clearSearchStory() {
+        searchProjectTextField.clear();
+    }
+
+    /**
      * Press Enter to search story.
      */
 

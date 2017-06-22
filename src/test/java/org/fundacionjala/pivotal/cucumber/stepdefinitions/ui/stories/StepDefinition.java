@@ -97,6 +97,7 @@ public class StepDefinition {
      */
     @When("^I search Story with the name \"(.*)\"$")
     public void searchStory(final String storyname) {
+        initStory.clearSearchStory();
         initStory.searchStoryById(storyname);
         initStory.pressEnterSearchStory();
         initStory.deployStory();
@@ -160,7 +161,7 @@ public class StepDefinition {
      *
      * @param validationError to verify if the message should be validation Error.
      */
-    @Then("^Verify the message should be \"(.*)\"$")
+    @Then("^Verify if the message show it should be \"(.*)\"$")
     public void verifyMessageValidationError(final String validationError) {
         assertTrue(initStory.validationError(validationError));
         initStory.clickOkToCreateNewStory();
