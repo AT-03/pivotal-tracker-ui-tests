@@ -108,7 +108,6 @@ public class Dashboard extends AbstractBasePage {
     }
 
     /**
-
      * Verify the message.
      *
      * @param message is the message
@@ -119,9 +118,10 @@ public class Dashboard extends AbstractBasePage {
     }
 
 
-     * Click on the element.
+    /**
+     * click.
      *
-     * @return the instance of the story class
+     * @return a instance of story class.
      */
 
     public Story clickSearchProject() {
