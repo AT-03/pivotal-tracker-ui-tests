@@ -26,7 +26,17 @@ public class WorkspacesUIStepts {
     private WorkSpacesSettings workSpacesSettings;
     private WorkspaceMain workspaceMain;
 
-    public WorkspacesUIStepts(final Dashboard dashboard, final Workspaces workspaces, final WorkSpacesSettings workSpacesSettings, final WorkspaceMain workspaceMain) {
+    /**
+     * Constructor.
+     *
+     * @param dashboard          class
+     * @param workspaces         class
+     * @param workSpacesSettings class
+     * @param workspaceMain      class
+     */
+
+    public WorkspacesUIStepts(final Dashboard dashboard, final Workspaces workspaces, final WorkSpacesSettings
+            workSpacesSettings, final WorkspaceMain workspaceMain) {
         this.dashBoard = dashboard;
         this.workSpaces = workspaces;
         this.workSpacesSettings = workSpacesSettings;
