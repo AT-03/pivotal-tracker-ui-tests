@@ -108,6 +108,7 @@ public class Dashboard extends AbstractBasePage {
     }
 
     /**
+
      * Verify the message.
      *
      * @param message is the message
@@ -115,6 +116,17 @@ public class Dashboard extends AbstractBasePage {
      */
     public boolean verifyDeletionMessage(final String message) {
         return CommonActions.verifyMessages(deletionMessage, message);
+    }
+
+
+     * Click on the element.
+     *
+     * @return the instance of the story class
+     */
+
+    public Story clickSearchProject() {
+        CommonActions.clickElement(selectProject);
+        return new Story();
     }
 
 }
