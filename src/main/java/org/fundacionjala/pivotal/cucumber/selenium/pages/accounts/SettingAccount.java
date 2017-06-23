@@ -15,14 +15,14 @@ public class SettingAccount extends AbstractBasePage {
     private WebElement deleteAccountLink;
 
     /**
-     * This method doing click on "Ok alert Message" button.
+     * This method is clicking on the "Ok alert Message" button.
      */
     private void clickOKAlertMessage() {
-        getWebDriver().switchTo().alert().accept();
+        driver.switchTo().alert().accept();
     }
 
     /**
-     * This method doing click on "Delete Account" link.
+     * This method is clicking on the "Delete Account" link.
      */
     void clickDeleteAccountLink() {
         CommonActions.clickElement(deleteAccountLink);

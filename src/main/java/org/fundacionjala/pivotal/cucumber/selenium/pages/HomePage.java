@@ -1,7 +1,7 @@
 package org.fundacionjala.pivotal.cucumber.selenium.pages;
 
-import org.fundacionjala.pivotal.cucumber.selenium.menu.ToolBars;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.menu.ToolBars;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

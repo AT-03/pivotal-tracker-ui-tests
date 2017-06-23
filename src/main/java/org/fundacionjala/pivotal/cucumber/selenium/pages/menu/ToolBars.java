@@ -4,7 +4,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.fundacionjala.pivotal.cucumber.selenium.browser.DriverManager;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.SignIn;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.accounts.Accounts;
@@ -23,7 +22,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class ToolBars extends AbstractBasePage {
     private static final int MIN_TIMEOUT = 3;
     private static final Logger LOGGER = LogManager
-            .getLogger(org.fundacionjala.pivotal.cucumber.selenium.menu.ToolBars.class);
+            .getLogger(ToolBars.class);
 
     /**
      * Locate element.
@@ -66,25 +65,26 @@ public class ToolBars extends AbstractBasePage {
      *
      * @return The user name.
      */
-    private String getUserName() {
+    public String getUserName() {
         String userLogged = "";
 
         try {
-            getWebDriver().manage().timeouts().implicitlyWait(MIN_TIMEOUT, TimeUnit.SECONDS);
-            DriverManager.getInstance().getWait().withTimeout(MIN_TIMEOUT, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(MIN_TIMEOUT, TimeUnit.SECONDS);
+            wait.withTimeout(MIN_TIMEOUT, TimeUnit.SECONDS);
             userLogged = this.userMenu.getText();
         } catch (NoSuchElementException e) {
             LOGGER.error("Couldn't find the user name on top menu");
             throw new WebDriverException(e);
         } finally {
-            getWebDriver().manage().timeouts().implicitlyWait(Environment.getInstance().getTimeout(), TimeUnit.SECONDS);
-            DriverManager.getInstance().getWait().withTimeout(Environment.getInstance().getTimeout(), TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Environment.getInstance().getTimeout(), TimeUnit.SECONDS);
+            wait.withTimeout(Environment.getInstance().getTimeout(), TimeUnit.SECONDS);
         }
         return userLogged;
     }
 
+
     /**
-     * Whent the user is logged.
+     * When the user is logged.
      *
      * @param account The user account.
      * @return The user account.
@@ -98,7 +98,7 @@ public class ToolBars extends AbstractBasePage {
      */
     public void clickUserMenu() {
         try {
-            DriverManager.getInstance().getWait().until(ExpectedConditions.elementToBeClickable(userMenu));
+            wait.until(ExpectedConditions.elementToBeClickable(userMenu));
             CommonActions.clickOnaHiddenElement(userMenu);
         } catch (WebDriverException e) {
             LOGGER.warn("The userMenu is delaying to much in loading");
@@ -128,4 +128,8 @@ public class ToolBars extends AbstractBasePage {
         return new Accounts();
     }
 
+
 }
+
+
+

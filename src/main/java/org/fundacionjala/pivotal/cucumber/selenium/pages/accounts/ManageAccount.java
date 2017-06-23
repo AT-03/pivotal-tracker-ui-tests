@@ -1,6 +1,5 @@
 package org.fundacionjala.pivotal.cucumber.selenium.pages.accounts;
 
-import org.fundacionjala.pivotal.cucumber.selenium.browser.DriverManager;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
 import org.openqa.selenium.By;
@@ -22,7 +21,7 @@ public class ManageAccount extends AbstractBasePage {
      * @return SettingAccount page.
      */
     SettingAccount clickSetting(final String name) {
-        WebElement settingButton = getWebDriver().findElement(By.cssSelector("a[href='" + name + "']"));
+        WebElement settingButton = driver.findElement(By.cssSelector("a[href='" + name + "']"));
         CommonActions.clickElement(settingButton);
         return new SettingAccount();
     }
@@ -31,6 +30,6 @@ public class ManageAccount extends AbstractBasePage {
      * This method wait while loading element.
      */
     public void waitPage() {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(accountNameLabel));
+        wait.until(ExpectedConditions.visibilityOf(accountNameLabel));
     }
 }

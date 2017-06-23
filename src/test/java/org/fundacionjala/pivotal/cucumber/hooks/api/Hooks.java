@@ -1,4 +1,4 @@
-package org.fundacionjala.pivotal.cucumber.hooks;
+package org.fundacionjala.pivotal.cucumber.hooks.api;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;

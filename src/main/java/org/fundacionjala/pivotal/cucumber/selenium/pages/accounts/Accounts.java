@@ -1,6 +1,5 @@
 package org.fundacionjala.pivotal.cucumber.selenium.pages.accounts;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.fundacionjala.pivotal.cucumber.selenium.pages.AbstractBasePage;
@@ -14,6 +13,8 @@ import org.openqa.selenium.support.FindBy;
 public class Accounts extends AbstractBasePage {
 
     private static final String MANAGE_ACCOUNT = "MANAGE ACCOUNT";
+    private static final String ACCOUNTNOTFOUND = "Account Not found";
+
 
     @FindBy(id = "new_account_link")
     private WebElement createAccountButton;
@@ -87,9 +88,7 @@ public class Accounts extends AbstractBasePage {
      */
     public boolean deleteAllAccounts(final List<WebElement> accountList) {
 
-        Iterator<WebElement> iter = accountList.iterator();
-        while (iter.hasNext()) {
-            WebElement webElement = iter.next();
+        for (WebElement webElement : accountList) {
             String text = webElement.getText();
             if (text.equals(MANAGE_ACCOUNT)) {
                 deleteAccount(webElement);
@@ -143,27 +142,26 @@ public class Accounts extends AbstractBasePage {
     }
 
     /**
-     * The method find the namae account.
+     * The method find the name account.
      *
      * @param webElementNameAccount webElement param
      * @param accountName           second param
-     * @return boolean is succesfull
+     * @return String is successful
      */
-    public boolean findAccount(final List<WebElement> webElementNameAccount, final String accountName) {
-        Iterator<WebElement> iter = webElementNameAccount.iterator();
-        while (iter.hasNext()) {
-            WebElement webElement = iter.next();
+    public String  findAccount(final List<WebElement> webElementNameAccount, final String accountName) {
+
+        for (WebElement webElement : webElementNameAccount) {
             String text = webElement.getText();
-            if (text.equalsIgnoreCase(accountName)) {
-                return true;
+            if (accountName.equalsIgnoreCase(text)) {
+                return accountName;
             }
 
         }
-        return false;
+        return ACCOUNTNOTFOUND;
     }
 
     /**
-     * The metho create a new account.
+     * The method create a new account.
      *
      * @param accountName a new name account
      * @return ManageAccount Instance

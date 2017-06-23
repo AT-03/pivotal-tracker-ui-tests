@@ -32,7 +32,7 @@ public class ProjectManagement extends AbstractBasePage {
     public String getProjectId() {
         String projectId = "";
         String regularExpression = "(\\d+)$";
-        String url = getWebDriver().getCurrentUrl();
+        String url = driver.getCurrentUrl();
         Matcher matcher = Pattern.compile(regularExpression).matcher(url);
         if (matcher.find()) {
             projectId = matcher.group();

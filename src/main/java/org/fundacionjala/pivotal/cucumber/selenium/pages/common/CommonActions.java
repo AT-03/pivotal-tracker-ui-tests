@@ -1,6 +1,8 @@
 package org.fundacionjala.pivotal.cucumber.selenium.pages.common;
 
 import org.fundacionjala.pivotal.cucumber.selenium.browser.DriverManager;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.accounts.Accounts;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.menu.ToolBars;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
@@ -119,6 +121,18 @@ public final class CommonActions {
     public static String getText(final WebElement webElement) {
         DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
         return webElement.getText();
+    }
+
+    /**
+     * This method return an account.
+     *
+     * @return Account return an account
+     */
+    public static Accounts getAccount() {
+        ToolBars topMenu = new ToolBars();
+        topMenu.clickUserMenu();
+        Accounts account = topMenu.clickAccountDropDownItem();
+        return account;
     }
 }
 

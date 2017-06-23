@@ -5,17 +5,15 @@ import cucumber.api.java.en.Then;
 
 import java.util.Map;
 
+import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectFormSetting;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectManagement;
-import org.fundacionjala.pivotal.cucumber.stepdefinitions.ui.commonsteps.CommonStepsUI;
-
 
 import static org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectFormSetting.ACCOUNT;
 import static org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectFormSetting.PROJECT_NAME;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by reinaldo on 20/06/2017.
@@ -52,10 +50,10 @@ public class AccountAssertionUI {
     public void verifyTheNewAccountWithHisProject() {
         Navigator.goToDashboard();
         final String itemAccount = settingMap.get(ACCOUNT);
-        boolean resultActual = CommonStepsUI.getAccount().
-                findAccount(CommonStepsUI.getAccount().getNameAccountList(), itemAccount);
+        String resultActual = CommonActions.getAccount().
+                findAccount(CommonActions.getAccount().getNameAccountList(), itemAccount);
         Navigator.goToDashboard();
-        assertTrue(resultActual);
+        assertEquals(itemAccount, resultActual);
 
     }
 
@@ -73,6 +71,18 @@ public class AccountAssertionUI {
         Navigator.goToDashboard();
         assertEquals(messageProject, messageErrorProject);
         assertEquals(messageAccount, messageErrorAccount);
+    }
 
+    /**
+     * The method require the fill the field.
+     *
+     * @param messageProject require the fill the field
+     */
+    @Then("^The project should to message as \"([^\"]*)\"$")
+    public void theProjectShouldToMessageAs(final String messageProject) {
+        ProjectForm projectForm = new ProjectForm();
+        String messageErrorProject = projectForm.getMessageErrorProject();
+        Navigator.goToDashboard();
+        assertEquals(messageProject, messageErrorProject);
     }
 }

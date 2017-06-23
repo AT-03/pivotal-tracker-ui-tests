@@ -27,15 +27,8 @@ public class ProjectForm extends AbstractBasePage {
     @FindBy(css = ".tc-account-selector__header")
     private WebElement accountDropDownList;
 
-    /**
-     * Locate webElement.
-     */
     @FindBy(css = ".tc-account-selector__option-account-name")
     private List<WebElement> accountOptionDropDownList;
-
-    /**
-     * set work space button.
-     */
 
     @FindBy(css = ".tc-form-modal-footer__button."
             + "tc-form-modal-footer__button--submit")
@@ -43,6 +36,7 @@ public class ProjectForm extends AbstractBasePage {
 
     @FindBy(css = "div[data-aid='create-account-button']")
     private WebElement createAccountButtonOptionDropDownList;
+
     @FindBy(css = "input.tc-account-creator__name")
     private WebElement newAccountProjectTextField;
 
@@ -89,7 +83,7 @@ public class ProjectForm extends AbstractBasePage {
      */
     private void selectedProjectPrivacy(final ProjectPrivacy projectPrivacyType) {
         WebElement projectPrivacy =
-                getWebDriver().findElement(By.cssSelector("input[data-aid='" + projectPrivacyType.toString() + "']"));
+                driver.findElement(By.cssSelector("input[data-aid='" + projectPrivacyType.toString() + "']"));
         CommonActions.clickElement(projectPrivacy);
     }
 

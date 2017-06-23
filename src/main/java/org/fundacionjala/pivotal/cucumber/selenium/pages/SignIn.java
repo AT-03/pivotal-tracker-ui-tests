@@ -1,8 +1,8 @@
 package org.fundacionjala.pivotal.cucumber.selenium.pages;
 
 import org.fundacionjala.pivotal.cucumber.selenium.browser.DriverManager;
-import org.fundacionjala.pivotal.cucumber.selenium.menu.ToolBars;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.menu.ToolBars;
 import org.fundacionjala.pivotal.cucumber.utils.Environment;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
@@ -30,9 +30,9 @@ public class SignIn extends AbstractBasePage {
     /**
      * Method to perform a login as Primary user.
      *
-     * @param userName Username used to perform a login to Mach2 application.
-     * @param password Password used to perform a login to Mach2 application.
-     * @return The login to Mach2 application.
+     * @param userName Username used to perform a login to PivotalTracker application.
+     * @param password Password used to perform a login to PivotalTracker application.
+     * @return The login to PivotalTracker application.
      */
     public static Dashboard verifyTheLoginOfUser(final String userName,
                                                  final String password) {
@@ -57,9 +57,9 @@ public class SignIn extends AbstractBasePage {
     /**
      * Method to perform a login as Primary user.
      *
-     * @param userName Username used to perform a login to Mach2 application.
-     * @param password Password used to perform a login to Mach2 application.
-     * @return The login to Mach2 application.
+     * @param userName Username used to perform a login to PivotalTracker application.
+     * @param password Password used to perform a login to PivotalTracker application.
+     * @return The login to PivotalTracker application.
      */
     public static Dashboard loginAs(final String userName, final String password) {
 

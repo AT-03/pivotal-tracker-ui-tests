@@ -19,7 +19,7 @@ public final class BrowserFactory {
     }
 
     /**
-     * webDriver function.
+     * driver function.
      *
      * @param browserName kind of browser.
      * @return the driver

@@ -1,4 +1,4 @@
-package org.fundacionjala.pivotal.cucumber.hooks;
+package org.fundacionjala.pivotal.cucumber.hooks.ui;
 
 import cucumber.api.java.Before;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.SignIn;
@@ -7,12 +7,12 @@ import org.fundacionjala.pivotal.cucumber.utils.Environment;
 /**
  * login hooks.
  */
-public class GlobalLoginHook {
+public class LoginHook {
 
     /**
      * global hook for login.
      */
-    @Before("@loginAt03")
+    @Before("@login")
     public void loginToPivotal() {
 
         final String userName = Environment.getInstance().getUser();

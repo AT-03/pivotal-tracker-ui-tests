@@ -7,10 +7,10 @@ import org.apache.log4j.Logger;
 
 import org.fundacionjala.pivotal.cucumber.selenium.pages.Dashboard;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.accounts.ManageAccount;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectFormSetting;
-import org.fundacionjala.pivotal.cucumber.stepdefinitions.ui.commonsteps.CommonStepsUI;
 import org.fundacionjala.pivotal.cucumber.utils.Environment;
 
 /**
@@ -47,11 +47,11 @@ public class AccountStepsUI {
     /**
      * This method created a new account.
      *
-     * @param accountName String  whit the account name.
+     * @param accountName String  with the account name.
      */
     @When("^I create a new account (.*)$")
     public void createANewAccount(final String accountName) {
-        ManageAccount manageAccount = CommonStepsUI.getAccount().createAccount(accountName);
+        ManageAccount manageAccount = CommonActions.getAccount().createAccount(accountName);
         manageAccount.waitPage();
         Navigator.goToDashboard();
     }

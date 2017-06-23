@@ -1,20 +1,21 @@
-package org.fundacionjala.pivotal.cucumber.hooks;
+package org.fundacionjala.pivotal.cucumber.hooks.ui;
 
 import cucumber.api.java.Before;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navigator;
-import org.fundacionjala.pivotal.cucumber.stepdefinitions.ui.commonsteps.CommonStepsUI;
 
 /**
  * Created by Administrator on 20/06/2017.
- */
-public class AccountHooks {
+*/
+public class AccountsHook {
 
     /**
      * Method to delete all Accounts.
      */
     @Before("@deleteAllAccounts")
     public final void deleteAllAccounts() {
-        CommonStepsUI.getAccount().deleteAllAccounts(CommonStepsUI.getAccount().getManageAccountButtonList());
+        CommonActions.getAccount().deleteAllAccounts(CommonActions.getAccount().getManageAccountButtonList());
         Navigator.goToDashboard();
     }
+
 }

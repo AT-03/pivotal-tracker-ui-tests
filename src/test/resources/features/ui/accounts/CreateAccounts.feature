@@ -1,6 +1,6 @@
 Feature: Create Project with a account
 
-  @loginAt03 @deleteProject @deleteAllAccounts
+  @login @deleteProject @deleteAllAccounts
   Scenario: Verify if we create a new project with setting by default.
   New account is create and privacy is private.
     When I added a new project
@@ -25,3 +25,11 @@ Feature: Create Project with a account
     When I added a new project
       | PROJECT_PRIVACY | Public |
     Then The project should to message as "Enter a name for your project" and the account "Please select or create an account for the new project"
+
+  @deleteAllProjects @deleteAllAccounts
+  Scenario: Create a new project with project empty name
+    When I create a new account AutomationTestAT01-03
+    And I added a new project
+      | ACCOUNT         | AutomationTestAT01-03 |
+      | PROJECT_PRIVACY | Public                |
+    Then The project should to message as "Enter a name for your project"
