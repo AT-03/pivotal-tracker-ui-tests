@@ -1,6 +1,7 @@
-package org.fundacionjala.pivotal.cucumber.selenium.pages;
+package org.fundacionjala.pivotal.cucumber.selenium.pages.stories;
 
 import org.fundacionjala.pivotal.cucumber.selenium.browser.DriverManager;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;

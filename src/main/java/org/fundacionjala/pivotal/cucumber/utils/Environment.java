@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
  * establish a connection with pivotal tracker.
  */
 public final class Environment {
-    private static final Logger LOGGER = Logger.getLogger(Environment.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Environment.class);
     private static final String TIMEOUT = "timeout";
     private static final String BASE_URL = "singInUrl";
     private static final String AUTHENTICATION_BROWSER = "browser";

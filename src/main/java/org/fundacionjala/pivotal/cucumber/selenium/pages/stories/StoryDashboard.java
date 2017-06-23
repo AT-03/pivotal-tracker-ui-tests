@@ -1,6 +1,6 @@
-package org.fundacionjala.pivotal.cucumber.selenium.pages;
+package org.fundacionjala.pivotal.cucumber.selenium.pages.stories;
 
-import org.fundacionjala.pivotal.cucumber.selenium.browser.DriverManager;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -14,8 +14,6 @@ import java.util.List;
  * Created by Administrator on 6/16/2017.
  */
 public class StoryDashboard extends AbstractBasePage {
-
-    private static final int SECONDS = 4000;
 
     @FindBy(css = "[data-aid='new']")
     private WebElement addTaskTextField;
@@ -50,7 +48,6 @@ public class StoryDashboard extends AbstractBasePage {
      *
      * @param taskName task name.
      */
-
     public void writeMultipleAddTask(final List<String> taskName) {
         for (String task : taskName) {
             CommonActions.setTextField(addTaskTextField, task);
@@ -61,7 +58,6 @@ public class StoryDashboard extends AbstractBasePage {
     /**
      * Close story window.
      */
-
     public void closeStory() {
         CommonActions.clickElement(closeStoryButton);
     }
@@ -69,7 +65,6 @@ public class StoryDashboard extends AbstractBasePage {
     /**
      * Click on story selected.
      */
-
     public void clickSelectStory() {
         CommonActions.clickElement(deployStoryForUpdate);
     }
@@ -77,7 +72,6 @@ public class StoryDashboard extends AbstractBasePage {
     /**
      * Click on open task.
      */
-
     public void clickOpenTask() {
         CommonActions.clickElement(openAddTaskButton);
     }
@@ -88,7 +82,6 @@ public class StoryDashboard extends AbstractBasePage {
      * @param taskName   task name.
      * @param taskUpdate new task name.
      */
-
     public void clickUpdateTask(final String taskName, final String taskUpdate) {
         WebElement element = CommonActions.selectAnElement(taskList, taskName);
         if (element != null) {
@@ -103,10 +96,9 @@ public class StoryDashboard extends AbstractBasePage {
      *
      * @param taskDelete task name delete.
      */
-
     public void mouseOverTaskDelete(final String taskDelete) {
         WebElement element = CommonActions.selectAnElement(taskList, taskDelete);
-        Actions actions = new Actions(DriverManager.getInstance().getDriver());
+        Actions actions = new Actions(driver);
         actions.moveToElement(element).perform();
         actions.click(deleteTaskButton).perform();
     }
@@ -115,11 +107,9 @@ public class StoryDashboard extends AbstractBasePage {
      * Search story by name.
      *
      * @param storyName story name.
-     * @throws InterruptedException time wait.
      */
-
-    public void searchStory(final String storyName) throws InterruptedException {
-        Thread.sleep(SECONDS);
+    public void searchStory(final String storyName) {
+        CommonActions.sleep();
         CommonActions.setTextField(searchProjectTextField, storyName);
         CommonActions.clickElement(searchProjectButton);
     }

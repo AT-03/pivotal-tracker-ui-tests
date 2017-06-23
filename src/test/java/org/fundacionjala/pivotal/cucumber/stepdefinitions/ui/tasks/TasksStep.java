@@ -5,9 +5,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.Dashboard;
-import org.fundacionjala.pivotal.cucumber.selenium.pages.SignIn;
-import org.fundacionjala.pivotal.cucumber.selenium.pages.StoryDashboard;
-import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navigator;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.stories.StoryDashboard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +16,7 @@ import java.util.List;
 public class TasksStep {
 
     private Dashboard dashboard;
-    private  StoryDashboard storyDashboard;
+    private StoryDashboard storyDashboard;
     private List<String> strings = new ArrayList<>();
 
     /**
@@ -37,11 +35,9 @@ public class TasksStep {
      * Open a project and story.
      *
      * @param storyName story name.
-     * @throws InterruptedException time wait.
      */
-
     @Given("^I open a story with name as \"([^\"]*)\"$")
-    public void iOpenAProjectWithNameAsAndStoryWithNameAs(final String storyName) throws InterruptedException {
+    public void iOpenAStoryWithNameAs(final String storyName) {
         storyDashboard.searchStory(storyName);
         storyDashboard.clickSelectStory();
     }
@@ -51,22 +47,19 @@ public class TasksStep {
      *
      * @param taskName task name.
      */
-
     @When("^I write a or multiple task and press Enter with a following names$")
     public void iWriteAOrMultipleTaskAndPressEnterWithAFollowingNameS(final List<String> taskName) {
         storyDashboard.clickOpenTask();
-        for (int i = 0; i < taskName.size(); i++) {
-            strings.add(taskName.get(i));
-        }
+        strings.addAll(taskName);
         storyDashboard.writeMultipleAddTask(strings);
     }
 
     /**
-     * Finished to create/update/delete.
+     * Close story.
      */
 
-    @Then("^The task is (?:created|update|delete) correctly$")
-    public void theTaskIsCreatedCorrectly() {
+    @Then("^I close the story$")
+    public void iCloseStory() {
         storyDashboard.closeStory();
     }
 
@@ -87,7 +80,6 @@ public class TasksStep {
      *
      * @param taskDelete task name delete.
      */
-
     @When("^I delete the next task \"([^\"]*)\"$")
     public void iDeleteTheNextTask(final String taskDelete) {
         storyDashboard.mouseOverTaskDelete(taskDelete);
@@ -95,32 +87,13 @@ public class TasksStep {
 
     /**
      * Open project.
+     *
      * @param projectName project name.
      */
-
     @Given("^I open a project with name as \"([^\"]*)\"$")
     public void iOpenAProjectWithNameAs(final String projectName) {
         dashboard.searchForAProject(projectName);
         storyDashboard = dashboard.clickSelectProject();
-    }
-
-    /**
-     * Login dashboard.
-     * @param arg0 login.
-     */
-
-    @Given("^I login to pivotal as \"([^\"]*)\"$")
-    public void iLoginToPivotalAs(final String arg0) {
-        dashboard = SignIn.loginOtherUser();
-    }
-
-    /**
-     * Go to dashboard.
-     */
-
-    @And("^I go to Dashboard$")
-    public void iGoToDashboard() {
-        Navigator.goToDashboard();
     }
 
 }

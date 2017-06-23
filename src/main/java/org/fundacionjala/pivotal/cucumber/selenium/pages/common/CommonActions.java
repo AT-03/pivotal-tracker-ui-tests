@@ -1,5 +1,6 @@
 package org.fundacionjala.pivotal.cucumber.selenium.pages.common;
 
+import org.apache.log4j.Logger;
 import org.fundacionjala.pivotal.cucumber.selenium.browser.DriverManager;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.accounts.Accounts;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.menu.ToolBars;
@@ -14,8 +15,12 @@ import java.util.List;
  * Created by Administrator on 5/30/2017.
  */
 public final class CommonActions {
+
+    private static final int SECONDS = 4000;
+    private static final Logger LOGGER = Logger.getLogger(CommonActions.class.getName());
+
     /**
-     * construcotor.
+     * constructor.
      */
     private CommonActions() {
     }
@@ -133,6 +138,19 @@ public final class CommonActions {
         topMenu.clickUserMenu();
         Accounts account = topMenu.clickAccountDropDownItem();
         return account;
+    }
+
+    /**
+     * Wait an seconds.
+     */
+
+    public static void sleep() {
+        try {
+            Thread.sleep(SECONDS);
+        } catch (InterruptedException e) {
+            LOGGER.error("Waiting time is over", e);
+            Thread.currentThread().interrupt();
+        }
     }
 }
 

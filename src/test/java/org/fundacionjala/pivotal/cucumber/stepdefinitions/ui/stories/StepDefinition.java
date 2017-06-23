@@ -8,7 +8,7 @@ import io.restassured.response.Response;
 import org.fundacionjala.pivotal.cucumber.api.RequestManager;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.Dashboard;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.SignIn;
-import org.fundacionjala.pivotal.cucumber.selenium.pages.Story;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.stories.Story;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navigator;
 
 import java.util.Map;
