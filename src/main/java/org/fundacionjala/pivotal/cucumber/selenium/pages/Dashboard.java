@@ -126,7 +126,7 @@ public class Dashboard extends AbstractBasePage {
      * @return a instance of story class.
      */
 
-    public Story clickSearchProject() {
+    public org.fundacionjala.pivotal.cucumber.selenium.pages.stories.Story clickSearchProject() {
         CommonActions.clickElement(selectProject);
         return new Story();
     }

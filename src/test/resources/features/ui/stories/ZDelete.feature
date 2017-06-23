@@ -1,8 +1,8 @@
 Feature: Delete Story
 
+  @goToDashboard @deleteAllProjects
   Scenario: Verify if we can delete a Story created
-    When I search a Story with the name "UpdateStory" to delete it
-    And I click on checkBox of the Story created
-    And I click on the button Delete
-    Then I click on confirm button to delete the story
+    When Open a project created as "ProjectGUI"
+    And I search a Story with the name "GuiUpdate" to delete it
+    And I delete a story
     Then The message should be "1 story deleted"

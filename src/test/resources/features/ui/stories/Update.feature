@@ -1,35 +1,46 @@
 Feature: Update Story
 
+  @goToDashboard @deleteAllProjects
   Scenario: Verify if the Story can be Update
-    When I search Story with the name "Gui"
+    When Open a project created as "ProjectGUI"
+    And I search Story with the name "Gui"
     And I insert the datas for the Story
-      | name       | Gui         |
-      | Story Type | Feature     |
-      | Points     | 1 Point     |
-      | Blockers   | blockersOne |
-      | Label      | Hello       |
+      | NAME       | GuiUpdate   |
+      | STORY_TYPE | Feature     |
+      | POINTS     | 1 Point     |
+      | BLOCKERS   | blockersOne |
+      | LABEL      | Hello       |
     And I click on Close button to update the Story
+    Then Verify if the story was created with the name "GuiUpdate"
 
+  @goToDashboard @deleteAllProjects
   Scenario: Verify if the Story can be Update just with the name
-    When I search Story with the name "StoryONe"
+    When Open a project created as "ProjectGUI"
+    And I search Story with the name "StoryONe"
     And I insert the datas for the Story
-      | name | Gui |
+      | NAME | StoryOneUpdate |
     And I click on Close button to update the Story
+    Then Verify if the story was created with the name "StoryOneUpdate"
 
+  @goToDashboard @deleteAllProjects
   Scenario: Verify if the Story can be Update with same datas
-    When I search Story with the name "StoryNew"
+    When Open a project created as "ProjectGUI"
+    And I search Story with the name "StoryNew"
     And I insert the datas for the Story
-      | name     | Gui         |
-      | Blockers | blockersOne |
-      | Label    | Hello       |
+      | NAME     | StoryNewUpdate |
+      | BLOCKERS | blockersOne    |
+      | LABEL    | Hello          |
     And I click on Close button to update the Story
+    Then Verify if the story was created with the name "StoryNewUpdate"
 
+  @goToDashboard @deleteAllProjects
   Scenario: Verify if the Story can be Update without datas
-    When I search Story with the name "Gui"
+    When Open a project created as "ProjectGUI"
+    And I search Story with the name "Gui"
     And I insert the datas for the Story
-      | name       |  |
-      | Story Type |  |
-      | Points     |  |
-      | Blockers   |  |
-      | Label      |  |
+      | NAME       |  |
+      | STORY_TYPE |  |
+      | POINTS     |  |
+      | BLOCKERS   |  |
+      | LABEL      |  |
     And I click on Close button to update the Story
