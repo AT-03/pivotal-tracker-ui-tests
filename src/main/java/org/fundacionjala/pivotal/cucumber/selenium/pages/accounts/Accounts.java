@@ -1,11 +1,11 @@
 package org.fundacionjala.pivotal.cucumber.selenium.pages.accounts;
 
-import java.util.List;
-
 import org.fundacionjala.pivotal.cucumber.selenium.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 6/12/2017.
@@ -84,17 +84,10 @@ public class Accounts extends AbstractBasePage {
      * This method deleted all accounts.
      *
      * @param accountList List the elements to deleted.
-     * @return Return true if deleted all projects.
      */
-    public boolean deleteAllAccounts(final List<WebElement> accountList) {
-
-        for (WebElement webElement : accountList) {
-            String text = webElement.getText();
-            if (text.equals(MANAGE_ACCOUNT)) {
-                deleteAccount(webElement);
-            }
-        }
-        return true;
+    public void deleteAllAccounts(final List<WebElement> accountList) {
+        accountList.stream().filter(element -> element.getText().equals(MANAGE_ACCOUNT))
+                .forEach(this::deleteAccount);
     }
 
     /**
@@ -148,7 +141,7 @@ public class Accounts extends AbstractBasePage {
      * @param accountName           second param
      * @return String is successful
      */
-    public String  findAccount(final List<WebElement> webElementNameAccount, final String accountName) {
+    public String findAccount(final List<WebElement> webElementNameAccount, final String accountName) {
 
         for (WebElement webElement : webElementNameAccount) {
             String text = webElement.getText();
