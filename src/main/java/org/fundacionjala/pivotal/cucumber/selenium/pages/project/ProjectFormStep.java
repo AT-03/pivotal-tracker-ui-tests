@@ -7,5 +7,5 @@ public interface ProjectFormStep {
     /**
      * The method execute the steps.
      */
-    void  executeStep();
+    void executeStep();
 }

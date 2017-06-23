@@ -1,6 +1,7 @@
 package org.fundacionjala.pivotal.cucumber.selenium.browser;
 
 import java.util.concurrent.TimeUnit;
+
 import org.fundacionjala.pivotal.cucumber.utils.Environment;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,7 +19,7 @@ public final class DriverManager {
     private WebDriverWait wait;
 
     /**
-     * Cotructor.
+     * Constructor.
      */
     private DriverManager() {
         final int timeOut = ENVIRONMENT.getTimeout();

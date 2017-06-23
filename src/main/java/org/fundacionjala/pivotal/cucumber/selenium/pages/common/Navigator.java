@@ -6,13 +6,13 @@ import org.fundacionjala.pivotal.cucumber.utils.Environment;
 /**
  * Created by Administrator on 6/2/2017.
  */
-public final class Navegator {
+public final class Navigator {
     private static final String DASHBOARD = "dashboard";
 
     /**
      * Constructor private.
      */
-    private Navegator() {
+    private Navigator() {
     }
 
     /**

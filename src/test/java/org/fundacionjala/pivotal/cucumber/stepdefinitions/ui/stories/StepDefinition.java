@@ -9,7 +9,7 @@ import org.fundacionjala.pivotal.cucumber.api.RequestManager;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.Dashboard;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.SignIn;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.Story;
-import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navegator;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navigator;
 
 import java.util.Map;
 
@@ -47,7 +47,7 @@ public class StepDefinition {
      */
     @And("^I go to DashBoard$")
     public void refreshDasboard() {
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
     }
 
     /**

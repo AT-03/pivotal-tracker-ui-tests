@@ -1,6 +1,7 @@
 package org.fundacionjala.pivotal.cucumber.selenium.pages.menu;
 
 import java.util.concurrent.TimeUnit;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.fundacionjala.pivotal.cucumber.selenium.browser.DriverManager;
@@ -8,7 +9,7 @@ import org.fundacionjala.pivotal.cucumber.selenium.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.SignIn;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.accounts.Accounts;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
-import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navegator;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.cucumber.utils.Environment;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriverException;
@@ -65,7 +66,7 @@ public class ToolBars extends AbstractBasePage {
      *
      * @return The user name.
      */
-    public String getUserName() {
+    private String getUserName() {
         String userLogged = "";
 
         try {
@@ -111,7 +112,7 @@ public class ToolBars extends AbstractBasePage {
      * @return The login page.
      */
     public SignIn logout() {
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
         this.clickUserMenu();
         logOutButton.click();
         return new SignIn();

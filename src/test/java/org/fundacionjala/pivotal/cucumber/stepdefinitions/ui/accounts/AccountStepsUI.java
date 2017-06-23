@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 
 import org.fundacionjala.pivotal.cucumber.selenium.pages.Dashboard;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.accounts.ManageAccount;
-import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navegator;
+import org.fundacionjala.pivotal.cucumber.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.project.ProjectFormSetting;
 import org.fundacionjala.pivotal.cucumber.stepdefinitions.ui.commonsteps.CommonStepsUI;
@@ -53,7 +53,7 @@ public class AccountStepsUI {
     public void createANewAccount(final String accountName) {
         ManageAccount manageAccount = CommonStepsUI.getAccount().createAccount(accountName);
         manageAccount.waitPage();
-        Navegator.goToDashboard();
+        Navigator.goToDashboard();
     }
 
 }
