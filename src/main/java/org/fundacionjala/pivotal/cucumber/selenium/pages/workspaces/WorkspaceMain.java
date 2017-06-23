@@ -1,6 +1,5 @@
 package org.fundacionjala.pivotal.cucumber.selenium.pages.workspaces;
 
-import org.fundacionjala.pivotal.cucumber.selenium.browser.DriverManager;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
 import org.openqa.selenium.By;
@@ -107,7 +106,7 @@ public class WorkspaceMain extends AbstractBasePage {
         int zero = 0;
         for (int i = zero; i < projectName.length; i++) {
             clickOnProjectsDropDown();
-            DriverManager.getInstance().getWait().until(ExpectedConditions.
+            wait.until(ExpectedConditions.
                     presenceOfElementLocated(By.
                             cssSelector("ul._1VtS8__DropdownMenu__menuList")));
             CommonActions.selectAnElement(projectList, projectName[i]).click();

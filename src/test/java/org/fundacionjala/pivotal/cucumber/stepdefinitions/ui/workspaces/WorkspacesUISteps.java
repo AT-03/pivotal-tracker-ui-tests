@@ -1,6 +1,6 @@
 package org.fundacionjala.pivotal.cucumber.stepdefinitions.ui.workspaces;
 
-import cucumber.api.DataTable;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -12,8 +12,9 @@ import org.fundacionjala.pivotal.cucumber.selenium.pages.workspaces.WorkspaceMai
 import org.fundacionjala.pivotal.cucumber.selenium.pages.workspaces.Workspaces;
 import org.testng.Assert;
 
-import java.util.List;
 import java.util.Map;
+
+import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * Created by Administrator on 6/20/2017.
@@ -24,7 +25,7 @@ public class WorkspacesUISteps {
     private Dashboard dashBoard;
     private Workspaces workSpaces;
     private WorkSpacesSettings workSpacesSettings;
-    private WorkspaceMain workspaceMain;
+
 
     /**
      * Constructor.
@@ -40,22 +41,9 @@ public class WorkspacesUISteps {
         this.dashBoard = dashboard;
         this.workSpaces = workspaces;
         this.workSpacesSettings = workSpacesSettings;
-        this.workspaceMain = workspaceMain;
+
     }
 
-    /**
-     * Metod.
-     *
-     * @param body the map.
-     */
-    @When("^I navigate to dashboard workspace and create a new worksapce as:$")
-    public void iNavigateToDashboardWorkspaceAndCreateANewWorksapceAs(final Map<String, String> body) {
-        Navigator.goToDashboard();
-        dashBoard.clicOnWorkSpaces();
-        workSpaces.clickOnCreateWorkspaceButton();
-        workSpaces.setWorkspaceName(body.get("Name"));
-        workSpaces.clickOnWorkspaceSubmitButton();
-    }
 
     /**
      * Method.
@@ -128,9 +116,7 @@ public class WorkspacesUISteps {
      */
     @And("^\"([^\"]*)\" should not be displayed$")
     public void shouldNotBeDisplayed(final String workspaceName) {
-        Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
-//        Assert.assertFalse(workSpaces.verifyIfAworkSpaceExist(workspaceName));
     }
 
     /**
@@ -140,7 +126,6 @@ public class WorkspacesUISteps {
      */
     @When("^I navigate dashboard workspace and delete the \"([^\"]*)\"$")
     public void iNavigateDashboardWorkspaceAndDeleteThe(final String workspaceName) {
-        Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
         workSpaces.editWorkSpace(workspaceName);
         workSpacesSettings.clickOnDeleteLink();
@@ -154,19 +139,7 @@ public class WorkspacesUISteps {
      */
     @Then("^Message should be \"([^\"]*)\"$")
     public void messageShouldBe(final String message) {
-        System.out.println(message);
-        Assert.assertTrue(dashBoard.verifyDeletionMessage(message));
-    }
-
-    /**
-     * Method.
-     *
-     * @param errorMessage is the error message.
-     */
-    @Then("^Error message should be \"([^\"]*)\"$")
-    public void errorMessageShouldBe(final String errorMessage) {
-        workSpaces.verifyWorkSpaceBankNameError(errorMessage);
-        Navigator.goToDashboard();
+        assertEquals(dashBoard.verifyDeletionMessage(), message);
     }
 
     /**
@@ -193,26 +166,24 @@ public class WorkspacesUISteps {
     /**
      * Method.
      */
-    @When("^I navigate to  workspace on the dashboard and i select a workspace$")
-    public void iNavigateToWorkspaceOnTheDashboardAndISelectAWorkspace() {
-        Navigator.goToDashboard();
+
+
+    @When("^I navigate to dashboard workspace$")
+    public void iNavigateToDashboardWorkspace() {
         dashBoard.clicOnWorkSpaces();
     }
 
     /**
      * Method.
      *
-     * @param workspaceName is the workspace name.
-     * @param dataTable     is the table.
+     * @param body are the fields.
      */
-    @And("^I add multiple projects on \"([^\"]*)\"$")
-    public void iAddMultipleProjectsOn(final String workspaceName, final DataTable dataTable) {
-        workSpaces.selectAworkSpace(workspaceName);
-        workspaceMain.clickOnAddProjectButton();
-        List<List<String>> data = dataTable.raw();
-        workspaceMain.choseMoreThanOneprojectsToAdd(new String[]
-                {data.get(0).get(0), data.get(0).get(1), data.get(0).get(2)});
-        workspaceMain.clickOnSaveButton();
-        Navigator.goToDashboard();
+    @And("^create a new worksapce as:$")
+    public void createANewWorksapceAs(final Map<String, String> body) {
+        workSpaces.clickOnCreateWorkspaceButton();
+        workSpaces.setWorkspaceName(body.get("Name"));
+        workSpaces.clickOnWorkspaceSubmitButton();
     }
+
 }
+

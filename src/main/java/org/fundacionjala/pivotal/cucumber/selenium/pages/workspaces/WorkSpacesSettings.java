@@ -1,6 +1,5 @@
 package org.fundacionjala.pivotal.cucumber.selenium.pages.workspaces;
 
-import org.fundacionjala.pivotal.cucumber.selenium.browser.DriverManager;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
 import org.openqa.selenium.WebElement;
@@ -91,8 +90,7 @@ public class WorkSpacesSettings extends AbstractBasePage {
      */
 
     public boolean verifyWorkspaceName(final String workspaceName) {
-        DriverManager.getInstance().getWait()
-                .until(ExpectedConditions.visibilityOf(saveChangesMessage));
+        wait.until(ExpectedConditions.visibilityOf(saveChangesMessage));
         return CommonActions.verifyMessages(heraderWorkSpace, workspaceName);
     }
 
@@ -117,11 +115,5 @@ public class WorkSpacesSettings extends AbstractBasePage {
         CommonActions.clickElement(confirmDeleteButton);
     }
 
-    /**
-     * click on cancel deletion button.
-     */
-    public void clickOnCancelDeletionButton() {
-        CommonActions.clickElement(cancelDeleteButton);
-    }
 
 }

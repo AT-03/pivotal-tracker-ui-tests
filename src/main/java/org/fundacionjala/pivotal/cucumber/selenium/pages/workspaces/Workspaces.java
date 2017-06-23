@@ -1,6 +1,6 @@
 package org.fundacionjala.pivotal.cucumber.selenium.pages.workspaces;
 
-import org.fundacionjala.pivotal.cucumber.selenium.browser.DriverManager;
+
 import org.fundacionjala.pivotal.cucumber.selenium.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.cucumber.selenium.pages.common.CommonActions;
 import org.openqa.selenium.By;
@@ -8,8 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 /**
  * Created by Administrator on 6/16/2017.
@@ -55,8 +54,14 @@ public class Workspaces extends AbstractBasePage {
     /**
      * Locator.
      */
-    @FindBy(css = ".tc-form__input--error-message>span")
+    @FindBy(css = "div.tc-form__input--error-message span")
     private WebElement worksapaceCantBeBlankMessage;
+
+    /**
+     * Locator.
+     */
+    @FindBy(css = ".tc-form__input--error-message>span")
+    private WebElement workspaceNameisTakenMessage;
 
     /**
      * Locator.
@@ -161,6 +166,25 @@ public class Workspaces extends AbstractBasePage {
     }
 
     /**
+     * Get the error message.
+     *
+     * @return the text of the message.
+     */
+    public String getWorkSpaceBlankNameError() {
+        return worksapaceCantBeBlankMessage.getText();
+
+    }
+
+    /**
+     * Get the error message.
+     *
+     * @return the text of the message.
+     */
+    public String getWorkspaceTakenNameMessage() {
+        return workspaceNameisTakenMessage.getText();
+    }
+
+    /**
      * This method verify the message of worksapage name.
      *
      * @param errorMessage is the message.
@@ -170,19 +194,5 @@ public class Workspaces extends AbstractBasePage {
         return CommonActions.verifyMessages(errorAboveorBelow, errorMessage);
     }
 
-    /**
-     * Gets the workspace ID.
-     *
-     * @return the id.
-     */
-    public String getIdWorkspace() {
-        String url = DriverManager.getInstance().getDriver().getCurrentUrl();
-        String idWorkspace = "";
-        Pattern pattern = Pattern.compile("[\\D]");
-        Matcher m = pattern.matcher(url);
-        if (m.find()) {
-            idWorkspace = m.replaceAll("");
-        }
-        return idWorkspace;
-    }
+
 }

@@ -112,11 +112,10 @@ public class Dashboard extends AbstractBasePage {
     /**
      * Verify the message.
      *
-     * @param message is the message
      * @return true or false.
      */
-    public boolean verifyDeletionMessage(final String message) {
-        return CommonActions.verifyMessages(deletionMessage, message);
+    public String verifyDeletionMessage() {
+        return deletionMessage.getText();
     }
 
 
