@@ -36,11 +36,12 @@ public class TasksStep {
     /**
      * Open a project and story.
      *
-     * @param storyName   story name.
+     * @param storyName story name.
+     * @throws InterruptedException time wait.
      */
 
     @Given("^I open a story with name as \"([^\"]*)\"$")
-    public void iOpenAProjectWithNameAsAndStoryWithNameAs(final String storyName) {
+    public void iOpenAProjectWithNameAsAndStoryWithNameAs(final String storyName) throws InterruptedException {
         storyDashboard.searchStory(storyName);
         storyDashboard.clickSelectStory();
     }

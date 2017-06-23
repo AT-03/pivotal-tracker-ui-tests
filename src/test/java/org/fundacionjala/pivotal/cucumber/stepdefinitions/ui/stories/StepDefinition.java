@@ -193,7 +193,7 @@ public class StepDefinition {
      *
      * @param map to get the datas from the DataTable
      */
-    @And("^I insert datas for the Story$")
+    @And("^I insert the datas for the Story$")
     public void insertDataTOCreateStory(final Map<String, String> map) {
         initStory.insertDataForStory(map);
         //Insert Requester

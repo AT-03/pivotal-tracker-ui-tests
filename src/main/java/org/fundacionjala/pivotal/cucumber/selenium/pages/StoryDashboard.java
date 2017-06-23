@@ -15,6 +15,8 @@ import java.util.List;
  */
 public class StoryDashboard extends AbstractBasePage {
 
+    private static final int SECONDS = 4000;
+
     @FindBy(css = "[data-aid='new']")
     private WebElement addTaskTextField;
 
@@ -40,6 +42,8 @@ public class StoryDashboard extends AbstractBasePage {
     @FindBy(css = "span[data-aid='delete']")
     private WebElement deleteTaskButton;
 
+    @FindBy(css = "[class=\"magnify\"]")
+    private WebElement searchProjectButton;
 
     /**
      * Write a task or multiple tasks.
@@ -111,10 +115,12 @@ public class StoryDashboard extends AbstractBasePage {
      * Search story by name.
      *
      * @param storyName story name.
+     * @throws InterruptedException time wait.
      */
 
-    public void searchStory(final String storyName) {
+    public void searchStory(final String storyName) throws InterruptedException {
+        Thread.sleep(SECONDS);
         CommonActions.setTextField(searchProjectTextField, storyName);
-        searchProjectTextField.sendKeys(Keys.ENTER);
+        CommonActions.clickElement(searchProjectButton);
     }
 }

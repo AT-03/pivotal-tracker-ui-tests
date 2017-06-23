@@ -1,11 +1,7 @@
 Feature: Create Stories
 
-  Background:
-    #Given I login to pivotalTracker as "user1"
-
   @deleteProject
   Scenario: Verify if we can create a new story with the same datas of a story created
-    #Given Open a project created as "ProjectGUI"
     When I click on the button Add Story
     And I insert the datas for the Story
       | name        | Gui          |
@@ -19,7 +15,6 @@ Feature: Create Stories
 
   @deleteProject
   Scenario: Verify if we can create a new story just with the name
-    #Given Open a project created as "ProjectGUI"
     When I click on the button Add Story
     And I insert the datas for the Story
       | name | StoryONe |
@@ -28,7 +23,6 @@ Feature: Create Stories
 
   @deleteProject
   Scenario: Verify if we can create a new story whit same datas
-   # Given Open a project created as "ProjectGUI"
     When I click on the button Add Story
     And I insert the datas for the Story
       | name        | StoryNew     |
@@ -40,7 +34,6 @@ Feature: Create Stories
 
   @deleteProject
   Scenario: Verify if we can create a new without datas
-   # Given Open a project created as "ProjectGUI"
     When I click on the button Add Story
     And I insert the datas for the Story
       | name        |  |
