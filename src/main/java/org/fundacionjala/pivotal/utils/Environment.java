@@ -51,16 +51,6 @@ public final class Environment {
     }
 
     /**
-     * The method returns the value of one specific key.
-     *
-     * @param key of String type.
-     * @return a value of String type.
-     */
-    public String getPropertyValue(final String key) {
-        return userProperties.getProperty(key);
-    }
-
-    /**
      * Get the properties of the file.
      *
      * @param env string name of property setting.
@@ -96,7 +86,7 @@ public final class Environment {
      * @return String password of user.
      */
     public String getPassword() {
-        return PASS;
+        return getEnv(PASS);
     }
 
     /**
@@ -105,7 +95,7 @@ public final class Environment {
      * @return String get username
      */
     public String getUser() {
-        return USERNAME;
+        return getEnv(USERNAME);
     }
 
     /**
@@ -116,4 +106,5 @@ public final class Environment {
     public String getBrowser() {
         return getEnv(AUTHENTICATION_BROWSER);
     }
+
 }

@@ -1,11 +1,10 @@
-package org.fundacionjala.pivotal.stepdefinitions.ui.accounts;
+package org.fundacionjala.pivotal.stepdefinitions.ui.projects;
+
+import java.util.Map;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
-import java.util.Map;
-
-import org.fundacionjala.pivotal.selenium.pages.common.CommonActions;
 import org.fundacionjala.pivotal.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.selenium.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.selenium.pages.project.ProjectFormSetting;
@@ -18,18 +17,18 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by reinaldo on 20/06/2017.
  */
-public class AccountAssertionUI {
+public class ProjectAssertions {
 
     private Map<ProjectFormSetting, String> settingMap;
 
     /**
      * Constructor where initialize the values.
      *
-     * @param accountStepsUI ResourcesStep.
+     * @param projectSteps ResourcesStep.
      */
-    public AccountAssertionUI(final AccountStepsUI accountStepsUI) {
+    public ProjectAssertions(final ProjectSteps projectSteps) {
 
-        settingMap = accountStepsUI.getSettingMap();
+        settingMap = projectSteps.getSettingMap();
     }
 
     /**
@@ -50,8 +49,8 @@ public class AccountAssertionUI {
     public void verifyTheNewAccountWithHisProject() {
         Navigator.goToDashboard();
         final String itemAccount = settingMap.get(ACCOUNT);
-        String resultActual = CommonActions.getAccount().
-                findAccount(CommonActions.getAccount().getNameAccountList(), itemAccount);
+        String resultActual = Navigator.goToAccount().
+                findAccount(Navigator.goToAccount().getNameAccountList(), itemAccount);
         Navigator.goToDashboard();
         assertEquals(itemAccount, resultActual);
 

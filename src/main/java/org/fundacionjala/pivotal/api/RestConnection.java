@@ -19,9 +19,9 @@ public final class RestConnection {
     private static RestConnection instance;
 
     static {
-        PORT = ENVIRONMENT.getPropertyValue("proxyPort");
-        IP = ENVIRONMENT.getPropertyValue("proxyIp");
-        TOKEN = ENVIRONMENT.getPropertyValue("apiToken");
+        PORT = ENVIRONMENT.getEnv("proxyPort");
+        IP = ENVIRONMENT.getEnv("proxyIp");
+        TOKEN = ENVIRONMENT.getEnv("apiToken");
     }
 
     private RequestSpecification requestSpecification;
@@ -31,7 +31,7 @@ public final class RestConnection {
      * common parameters: proxy, header and baseUri.
      */
     private RestConnection() {
-        RestAssured.baseURI = ENVIRONMENT.getPropertyValue(BASE_URI);
+        RestAssured.baseURI = ENVIRONMENT.getEnv(BASE_URI);
 
         requestSpecification = new RequestSpecBuilder()
                 .addHeader(X_TRACKER_TOKEN_HEADER, TOKEN)

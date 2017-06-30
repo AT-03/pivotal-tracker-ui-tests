@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import org.fundacionjala.pivotal.selenium.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.selenium.pages.common.CommonActions;
+import org.fundacionjala.pivotal.selenium.pages.common.Navigator;
 
 /**
  * Created by Administrator on 6/12/2017.
@@ -66,11 +67,9 @@ public class Accounts extends AbstractBasePage {
 
     /**
      * This method deleted all accounts.
-     *
-     * @param accountList List the elements to deleted.
      */
-    public void deleteAllAccounts(final List<WebElement> accountList) {
-        accountList.stream()
+    public void deleteAllAccounts() {
+        Navigator.goToAccount().getManageAccountButtonList().stream()
                 .filter(element -> MANAGE_ACCOUNT.equals(element.getText()))
                 .forEach(this::deleteAccount);
     }

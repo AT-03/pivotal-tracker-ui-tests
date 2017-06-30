@@ -1,23 +1,24 @@
 package org.fundacionjala.pivotal.stepdefinitions.ui.tasks;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 import org.fundacionjala.pivotal.selenium.pages.Dashboard;
 import org.fundacionjala.pivotal.selenium.pages.stories.StoryDashboard;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Administrator on 6/16/2017.
  */
-public class TasksStep {
+public class TasksSteps {
 
     private Dashboard dashboard;
+
     private StoryDashboard storyDashboard;
-    private List<String> strings = new ArrayList<>();
 
     /**
      * Constructor.
@@ -26,7 +27,7 @@ public class TasksStep {
      * @param storyDashboard story dashboard.
      */
 
-    public TasksStep(final Dashboard dashboard, final StoryDashboard storyDashboard) {
+    public TasksSteps(final Dashboard dashboard, final StoryDashboard storyDashboard) {
         this.dashboard = dashboard;
         this.storyDashboard = storyDashboard;
     }
@@ -50,6 +51,7 @@ public class TasksStep {
     @When("^I write a or multiple task and press Enter with a following names$")
     public void iWriteAOrMultipleTaskAndPressEnterWithAFollowingNameS(final List<String> taskName) {
         storyDashboard.clickOpenTask();
+        List<String> strings = new ArrayList<>();
         strings.addAll(taskName);
         storyDashboard.writeMultipleAddTask(strings);
     }
@@ -57,7 +59,6 @@ public class TasksStep {
     /**
      * Close story.
      */
-
     @Then("^I close the story$")
     public void iCloseStory() {
         storyDashboard.closeStory();

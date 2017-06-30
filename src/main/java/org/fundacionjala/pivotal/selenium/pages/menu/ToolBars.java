@@ -20,9 +20,10 @@ import org.fundacionjala.pivotal.utils.Environment;
  * Created by Administrator on 6/8/2017.
  */
 public class ToolBars extends AbstractBasePage {
+
+    private static final Logger LOGGER = LogManager.getLogger(ToolBars.class);
+
     private static final int MIN_TIMEOUT = 3;
-    private static final Logger LOGGER = LogManager
-            .getLogger(ToolBars.class);
 
     /**
      * Locate element.

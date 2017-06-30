@@ -9,8 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import org.fundacionjala.pivotal.selenium.browser.DriverManager;
-import org.fundacionjala.pivotal.selenium.pages.accounts.Accounts;
-import org.fundacionjala.pivotal.selenium.pages.menu.ToolBars;
 
 /**
  * Created by Administrator on 5/30/2017.
@@ -117,17 +115,6 @@ public final class CommonActions {
     public static String getText(final WebElement webElement) {
         DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
         return webElement.getText();
-    }
-
-    /**
-     * This method return an account.
-     *
-     * @return Account return an account
-     */
-    public static Accounts getAccount() {
-        ToolBars topMenu = new ToolBars();
-        topMenu.clickUserMenu();
-        return topMenu.clickAccountDropDownItem();
     }
 
     /**

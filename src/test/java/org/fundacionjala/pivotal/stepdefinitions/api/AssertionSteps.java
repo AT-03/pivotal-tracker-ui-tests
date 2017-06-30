@@ -1,9 +1,9 @@
 package org.fundacionjala.pivotal.stepdefinitions.api;
 
+import java.util.List;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -12,8 +12,8 @@ import static org.junit.Assert.assertFalse;
  * Created by Ruber Cuellar on 6/2/2017.
  */
 public class AssertionSteps {
-    private RequestSteps steps;
 
+    private RequestSteps steps;
 
     /**
      * Constructor.

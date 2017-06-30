@@ -1,30 +1,30 @@
 package org.fundacionjala.pivotal.stepdefinitions.ui.workspaces;
 
 
+import java.util.Map;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 import org.fundacionjala.pivotal.selenium.pages.Dashboard;
 import org.fundacionjala.pivotal.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.selenium.pages.workspaces.WorkSpacesSettings;
-import org.fundacionjala.pivotal.selenium.pages.workspaces.WorkspaceMain;
-
 import org.fundacionjala.pivotal.selenium.pages.workspaces.Workspaces;
 
-import org.testng.Assert;
-
-import java.util.Map;
-
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * Created by Administrator on 6/20/2017.
  */
-public class WorkspacesUISteps {
-
+public class WorkspacesSteps {
 
     private Dashboard dashBoard;
+
     private Workspaces workSpaces;
+
     private WorkSpacesSettings workSpacesSettings;
 
 
@@ -34,17 +34,13 @@ public class WorkspacesUISteps {
      * @param dashboard          class
      * @param workspaces         class
      * @param workSpacesSettings class
-     * @param workspaceMain      class
      */
-
-    public WorkspacesUISteps(final Dashboard dashboard, final Workspaces workspaces, final WorkSpacesSettings
-            workSpacesSettings, final WorkspaceMain workspaceMain) {
+    public WorkspacesSteps(final Dashboard dashboard, final Workspaces workspaces, final WorkSpacesSettings
+            workSpacesSettings) {
         this.dashBoard = dashboard;
         this.workSpaces = workspaces;
         this.workSpacesSettings = workSpacesSettings;
-
     }
-
 
     /**
      * Method.
@@ -54,13 +50,11 @@ public class WorkspacesUISteps {
     @Then("^\"([^\"]*)\" should be displayed in dashboard workspace$")
     public void shouldBeDisplayedInDashboardWorkspace(final String workspaceName) {
         Navigator.goToDashboard();
-        Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
         workSpaces.selectAworkSpace(workspaceName);
         Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
-        Assert.assertTrue(workSpaces.verifyIfAworkSpaceExist(workspaceName));
-
+        assertTrue(workSpaces.verifyIfAworkSpaceExist(workspaceName));
     }
 
     /**
@@ -85,7 +79,7 @@ public class WorkspacesUISteps {
      */
     @Then("^Confirm message should be \"([^\"]*)\"$")
     public void confirmMessageShouldBe(final String message) {
-        Assert.assertTrue(workSpacesSettings.verifyChangesSavedMessage(message));
+        assertTrue(workSpacesSettings.verifyChangesSavedMessage(message));
     }
 
     /**
@@ -95,7 +89,7 @@ public class WorkspacesUISteps {
      */
     @And("^project name should be \"([^\"]*)\"$")
     public void projectNameShouldBe(final String workspaceName) {
-        Assert.assertTrue(workSpacesSettings.verifyWorkspaceName(workspaceName));
+        assertTrue(workSpacesSettings.verifyWorkspaceName(workspaceName));
     }
 
     /**
@@ -107,7 +101,7 @@ public class WorkspacesUISteps {
     public void shouldBeDisplayed(final String workspaceName) {
         Navigator.goToDashboard();
         dashBoard.clicOnWorkSpaces();
-        Assert.assertTrue(workSpaces.verifyIfAworkSpaceExist(workspaceName));
+        assertTrue(workSpaces.verifyIfAworkSpaceExist(workspaceName));
     }
 
     /**
@@ -118,6 +112,7 @@ public class WorkspacesUISteps {
     @And("^\"([^\"]*)\" should not be displayed$")
     public void shouldNotBeDisplayed(final String workspaceName) {
         dashBoard.clicOnWorkSpaces();
+        //missing the assertions
     }
 
     /**
@@ -160,15 +155,13 @@ public class WorkspacesUISteps {
      */
     @And("^Error message below shoud be \"([^\"]*)\"$")
     public void errorMessageBelowShoudBe(final String errorMessage) {
-        Assert.assertFalse(workSpacesSettings.verifyChangesSavedMessage(errorMessage));
+        assertFalse(workSpacesSettings.verifyChangesSavedMessage(errorMessage));
         Navigator.goToDashboard();
     }
 
     /**
      * Method.
      */
-
-
     @When("^I navigate to dashboard workspace$")
     public void iNavigateToDashboardWorkspace() {
         dashBoard.clicOnWorkSpaces();

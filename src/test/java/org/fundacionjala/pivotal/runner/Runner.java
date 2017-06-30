@@ -2,9 +2,9 @@ package org.fundacionjala.pivotal.runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import org.fundacionjala.pivotal.selenium.browser.DriverManager;
-
 import org.testng.annotations.AfterClass;
+
+import org.fundacionjala.pivotal.selenium.browser.DriverManager;
 
 /**
  * Class to execute all feature tests.
@@ -29,7 +29,6 @@ public final class Runner extends AbstractTestNGCucumberTests {
      * Private constructor.
      */
     private Runner() {
-
     }
 
     /**

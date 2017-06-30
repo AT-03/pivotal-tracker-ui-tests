@@ -1,4 +1,4 @@
-package org.fundacionjala.pivotal.stepdefinitions.ui.accounts;
+package org.fundacionjala.pivotal.stepdefinitions.ui.projects;
 
 import java.util.Map;
 
@@ -6,7 +6,6 @@ import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
 
 import org.fundacionjala.pivotal.selenium.pages.Dashboard;
-import org.fundacionjala.pivotal.selenium.pages.common.CommonActions;
 import org.fundacionjala.pivotal.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.selenium.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.selenium.pages.project.ProjectFormSetting;
@@ -15,7 +14,7 @@ import org.fundacionjala.pivotal.utils.Environment;
 /**
  * Created by Administrator on 6/9/2017.
  */
-public class AccountStepsUI {
+public class ProjectSteps {
 
     private static final Logger LOGGER = Logger.getLogger(Environment.class.getSimpleName());
     private Map<ProjectFormSetting, String> settingMap;
@@ -50,7 +49,7 @@ public class AccountStepsUI {
      */
     @When("^I create a new account (.*)$")
     public void createANewAccount(final String accountName) {
-        CommonActions.getAccount().createAccount(accountName);
+        Navigator.goToAccount().createAccount(accountName);
         Navigator.goToDashboard();
     }
 

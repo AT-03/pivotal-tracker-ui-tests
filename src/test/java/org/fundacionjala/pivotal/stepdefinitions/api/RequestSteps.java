@@ -6,6 +6,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
+import org.apache.log4j.Logger;
 
 import org.fundacionjala.pivotal.api.RequestManager;
 import org.fundacionjala.pivotal.utils.StoreVariables;
@@ -16,8 +17,15 @@ import org.fundacionjala.pivotal.utils.Utils;
  */
 public class RequestSteps {
 
-    private Response response;
+    private static final Logger LOGGER = Logger.getLogger(RequestSteps.class);
 
+    private static final String POST = "POST";
+
+    private static final String ENDPOINT_S = "Endpoint : %s";
+
+    private static final String RESPONSE_S = "Response : %s";
+
+    private Response response;
 
     /**
      * To send GET request.
@@ -25,8 +33,11 @@ public class RequestSteps {
      * @param endpoint The endpoint to send
      */
     @When("^I request GET \"([^\"]*)\"$")
-    public void iRequestGETWith(final String endpoint) {
-        response = RequestManager.get(Utils.buildEndpoint(endpoint));
+    public void iRequestGET(final String endpoint) {
+        final String buildEndpoint = Utils.buildEndpoint(endpoint);
+        LOGGER.info(String.format(ENDPOINT_S, buildEndpoint));
+        response = RequestManager.get(buildEndpoint);
+        LOGGER.info(String.format(RESPONSE_S, response.prettyPrint()));
     }
 
     /**
@@ -39,9 +50,11 @@ public class RequestSteps {
      */
     @When("^I request \"(POST|PUT)\" \"([^\"]*)\" with:$")
     public void iRequestPOSTWith(final String request, final String endpoint, final Map<String, String> body) {
-        String endpoint1 = Utils.buildEndpoint(endpoint);
-        response = request.equals("POST") ? RequestManager.post(endpoint1, body)
-                : RequestManager.put(endpoint1, body);
+        final String buildEndpoint = Utils.buildEndpoint(endpoint);
+        LOGGER.info(String.format(ENDPOINT_S, buildEndpoint));
+        response = POST.equals(request) ? RequestManager.post(buildEndpoint, body)
+                : RequestManager.put(buildEndpoint, body);
+        LOGGER.info(String.format(RESPONSE_S, response.prettyPrint()));
     }
 
     /**
@@ -51,16 +64,10 @@ public class RequestSteps {
      */
     @Then("^I request DELETE \"([^\"]*)\"$")
     public void requestDelete(final String endpoint) {
-        response = RequestManager.delete(Utils.buildEndpoint(endpoint));
-    }
-
-    /**
-     * To return response.
-     *
-     * @return Response
-     */
-    public Response getResponse() {
-        return response;
+        final String buildEndpoint = Utils.buildEndpoint(endpoint);
+        LOGGER.info(String.format(ENDPOINT_S, buildEndpoint));
+        response = RequestManager.delete(buildEndpoint);
+        LOGGER.info(String.format(RESPONSE_S, response.prettyPrint()));
     }
 
     /**
@@ -72,5 +79,14 @@ public class RequestSteps {
     public void storeVariable(final String variableName) {
         StoreVariables var = new StoreVariables(variableName, response.jsonPath().get(""));
         Utils.getStoreVariables().add(var);
+    }
+
+    /**
+     * To return response.
+     *
+     * @return Response
+     */
+    public Response getResponse() {
+        return response;
     }
 }

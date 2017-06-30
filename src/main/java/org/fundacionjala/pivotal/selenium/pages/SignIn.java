@@ -1,13 +1,13 @@
 package org.fundacionjala.pivotal.selenium.pages;
 
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 import org.fundacionjala.pivotal.selenium.browser.DriverManager;
 import org.fundacionjala.pivotal.selenium.pages.common.CommonActions;
 import org.fundacionjala.pivotal.selenium.pages.menu.ToolBars;
 import org.fundacionjala.pivotal.utils.Environment;
-
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 /**
  * Created by Administrator on 6/14/2017.
@@ -35,8 +35,8 @@ public class SignIn extends AbstractBasePage {
      * @param password Password used to perform a login to PivotalTracker application.
      * @return The login to PivotalTracker application.
      */
-    public static Dashboard verifyTheLoginOfUser(final String userName,
-                                                 final String password) {
+    public static Dashboard loginOtherUser(final String userName,
+                                           final String password) {
         HomePage homePage = new HomePage();
         Dashboard dashboard = new Dashboard();
         try {
@@ -70,20 +70,6 @@ public class SignIn extends AbstractBasePage {
         signIn.clickNextButton();
         signIn.setPasswordTextField(password);
         return signIn.clickSigninButton();
-    }
-
-    /**
-     * Method  user for to login.
-     *
-     * @return Login  application.
-     */
-    public static Dashboard loginOtherUser() {
-        String userNameValue = Environment.getInstance().getUser();
-        String passwordValue = Environment.getInstance().getPassword();
-
-
-        return verifyTheLoginOfUser(Environment.getInstance().getPropertyValue(userNameValue),
-                Environment.getInstance().getPropertyValue(passwordValue));
     }
 
     /**
