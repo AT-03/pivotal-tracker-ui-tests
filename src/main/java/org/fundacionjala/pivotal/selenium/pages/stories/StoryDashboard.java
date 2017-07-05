@@ -100,10 +100,6 @@ public class StoryDashboard extends AbstractBasePage {
      */
     public void mouseOverTaskDelete(final String taskDelete) {
         WebElement element = CommonActions.selectAnElement(taskList, taskDelete);
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).perform();
-        actions.click(deleteTaskButton).perform();
-
         Action action = new Actions(driver)
                 .moveToElement(element)
                 .click(deleteTaskButton)

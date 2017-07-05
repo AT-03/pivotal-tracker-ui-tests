@@ -9,6 +9,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import org.fundacionjala.pivotal.selenium.pages.Dashboard;
+import org.fundacionjala.pivotal.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.selenium.pages.stories.StoryDashboard;
 
 /**
@@ -94,6 +95,7 @@ public class TasksSteps {
     @Given("^I open a project with name as \"([^\"]*)\"$")
     public void iOpenAProjectWithNameAs(final String projectName) {
         dashboard.searchForAProject(projectName);
+        Navigator.goToDashboard();
         storyDashboard = dashboard.clickSelectProject();
     }
 
