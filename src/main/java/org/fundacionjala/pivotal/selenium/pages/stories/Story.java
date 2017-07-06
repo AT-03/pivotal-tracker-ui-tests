@@ -24,7 +24,7 @@ public class Story extends AbstractBasePage {
     @FindBy(css = "div button[data-aid='save']")
     private WebElement addDescriptionButton;
 
-    @FindBy(css = "[data-type='search'] div.container section div div div.stories header a.selector")
+    @FindBy(css = "a[title='Select this story for bulk actions']")
     private WebElement deployStoryForDelete;
 
     @FindBy(css = "div.selectedStoriesControls__actions button.delete")
@@ -51,7 +51,7 @@ public class Story extends AbstractBasePage {
     @FindBy(css = "div[data-focus-id='BlockerAdd']")
     private WebElement openBlockersButton;
 
-    @FindBy(css = "textarea.editor.tracker_markup.std.name")
+    @FindBy(css = "textarea[name='story[name]']")
     private WebElement storyTitleTextField;
 
     @FindBy(css = "textarea[placeholder='Add a description']")
@@ -84,16 +84,16 @@ public class Story extends AbstractBasePage {
     @FindBy(css = "ul.tn_sliding_list.tn_flash_messages")
     private WebElement messageDelete;
 
-    @FindBy(css = "[data-type='search'] div.container section div div div.stories header a.expander")
+    @FindBy(css = "a[class='expander undraggable']")
     private WebElement deployStoryForUpdate;
 
     @FindBy(css = "button.autosaves.button.std.close")
     private WebElement autoUpdateAndCloseButton;
 
-    @FindBy(css = "div[data-aid=\"AlertDialog__title\"]")
+    @FindBy(css = "div[data-aid='AlertDialog__title']")
     private WebElement messageValidationError;
 
-    @FindBy(css = "button[data-aid=\"AlertDialog__confirm\"]")
+    @FindBy(css = "button[data-aid='AlertDialog__confirm']")
     private WebElement clickOkButtonToValidationError;
 
 

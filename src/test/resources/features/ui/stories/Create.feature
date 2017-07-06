@@ -1,13 +1,13 @@
 Feature: Create Story
 
   Background:
-    When  I request "POST" "/projects" with:
-      | name | ProjectGUI |
-    And I stored as [ProjectGUI]
+    When I request "POST" "/projects" with:
+      | name | GUI Project |
+    And I stored as [Project1]
 
   @login @goToDashboard @deleteProject
   Scenario: Verify if a Story can be create
-    When Open a project created as "ProjectGUI"
+    When Open a project created as "GUI Project"
     And I insert the datas for the Story
       | NAME        | Gui          |
       | STORY_TYPE  | Feature      |

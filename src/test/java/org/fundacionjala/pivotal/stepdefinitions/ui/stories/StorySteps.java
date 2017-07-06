@@ -9,6 +9,7 @@ import io.restassured.response.Response;
 
 import org.fundacionjala.pivotal.api.RequestManager;
 import org.fundacionjala.pivotal.selenium.pages.Dashboard;
+import org.fundacionjala.pivotal.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.selenium.pages.stories.Story;
 import org.fundacionjala.pivotal.selenium.pages.stories.StorySetting;
 
@@ -39,6 +40,7 @@ public class StorySteps {
      */
     @Then("^Open a project created as \"(.*)\"$")
     public void openProject(final String project) {
+        Navigator.goToDashboard();
         initDastBoard.searchForAProject(project);
         initStory = initDastBoard.clickSearchProject();
     }
