@@ -21,6 +21,7 @@ public class ProjectAssertions {
 
     private Map<ProjectFormSetting, String> settingMap;
 
+    private ProjectSteps projectSteps1;
     /**
      * Constructor where initialize the values.
      *
@@ -28,6 +29,7 @@ public class ProjectAssertions {
      */
     public ProjectAssertions(final ProjectSteps projectSteps) {
 
+        this.projectSteps1 = projectSteps;
         settingMap = projectSteps.getSettingMap();
     }
 
@@ -84,4 +86,26 @@ public class ProjectAssertions {
         Navigator.goToDashboard();
         assertEquals(messageProject, messageErrorProject);
     }
+
+
+
+    /**
+     * @param message verify the message is correct.
+     */
+    @Then("^Message should be \"([^\"]*)\"$")
+    public void messageShouldBe(final String message) {
+        if ("project1 was successfully deleted.".equals(message)) {
+            assertEquals(projectSteps1.getDastBoard().verifyDeletionMessage(), message);
+        }
+        if ("Changes saved".equals(message)) {
+            assertEquals(projectSteps1.getProjectSettings().verifyUpdate(), message);
+        }
+        if ("Project Unarchived".equals(message)) {
+            assertEquals(projectSteps1.getProjectSettings().verifyUnarchive(), message);
+        }
+        if ("Project Archived".equals(message)) {
+            assertEquals(projectSteps1.getDastBoard().verifyArchive(), message);
+        }
+}
+
 }

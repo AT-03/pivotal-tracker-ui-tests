@@ -18,6 +18,11 @@ import java.util.List;
 public class Dashboard extends AbstractBasePage {
 
     /**
+     * Locate webElement.
+     */
+    @FindBy(css = ".SettingsIcon__cog.projectTileHeader__hoverable")
+    private WebElement proyectSettingButton;
+    /**
      * Locator.
      */
     @FindBy(id = "create-project-button")
@@ -65,6 +70,12 @@ public class Dashboard extends AbstractBasePage {
      */
     @FindBy(css = "#notice")
     private WebElement deletionMessage;
+
+    /**
+     * Locator.
+     */
+    @FindBy(id = "notice")
+    private WebElement archiveNameProjects;
 
     /**
      * click on create project button.
@@ -131,6 +142,22 @@ public class Dashboard extends AbstractBasePage {
     public Story clickSearchProject() {
         CommonActions.clickElement(selectProject);
         return new Story();
+    }
+
+    /**
+     * Click on the Element.
+     * return the instance of the ProjectSettings class.
+     */
+    public void clickOnProjectSettingButton() {
+        CommonActions.clickElement(proyectSettingButton);
+    }
+
+    /**
+     * @return the String in the archiveNameProjects.
+     */
+    public String verifyArchive() {
+        return archiveNameProjects.getText();
+
     }
 
 }

@@ -9,6 +9,7 @@ import org.fundacionjala.pivotal.selenium.pages.Dashboard;
 import org.fundacionjala.pivotal.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.selenium.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.selenium.pages.project.ProjectFormSetting;
+import org.fundacionjala.pivotal.selenium.pages.project.ProjectSettings;
 import org.fundacionjala.pivotal.utils.Environment;
 
 /**
@@ -18,6 +19,20 @@ public class ProjectSteps {
 
     private static final Logger LOGGER = Logger.getLogger(Environment.class.getSimpleName());
     private Map<ProjectFormSetting, String> settingMap;
+
+    private Dashboard initDastBoard;
+    private ProjectSettings projectSettings;
+
+    /**
+     * @param dashBoard       in the constructor StepDefinition.
+     * @param projectSettings in the constructor StepDefinition.
+     */
+    public ProjectSteps(final Dashboard dashBoard,
+                        final ProjectSettings projectSettings) {
+
+        this.initDastBoard = dashBoard;
+        this.projectSettings = projectSettings;
+    }
 
     /**
      * This method added a new project.
@@ -52,6 +67,58 @@ public class ProjectSteps {
     public void createANewAccount(final String accountName) {
         Navigator.goToAccount().createAccount(accountName);
         Navigator.goToDashboard();
+    }
+
+    /**
+     * @param name for the after delete en UI form.
+     */
+    @When("^I delete \"([^\"]*)\"$")
+    public void iDelete(final String name) {
+        initDastBoard.searchForAProject(name);
+        initDastBoard.clickOnProjectSettingButton();
+        projectSettings.clickOnDeleteLink();
+        projectSettings.clickOnConfirmDeleteButton();
+    }
+
+    /**
+     * @param name1 atribute for the change.
+     * @param name2 atribute for update a name1.
+     */
+    @When("^I update \"([^\"]*)\" with \"([^\"]*)\":$")
+    public void iUpdateWith(final String name1, final String name2) {
+        initDastBoard.searchForAProject(name1);
+        initDastBoard.clickOnProjectSettingButton();
+        projectSettings.updateProjectName(name2);
+        projectSettings.setProjectDescription(name2);
+        projectSettings.clickOnSaveProjectButton();
+        projectSettings.clickonGotoHome();
+    }
+
+    /**
+     * @param action is the method two differents actions
+     * @param name   atribute do action sending.
+     */
+    @When("^I \"([^\"]*)\" the \"([^\"]*)\"$")
+    public void iThe(final String action, final String name) {
+        initDastBoard.searchForAProject(name);
+        initDastBoard.clickOnProjectSettingButton();
+        projectSettings.clickOnArchive();
+        projectSettings.clickOnConfirmArchive();
+        projectSettings.clickonGotoHome();
+    }
+
+    /**
+     * @return projectSettings atribute.
+     */
+    public ProjectSettings getProjectSettings() {
+        return projectSettings;
+    }
+
+    /**
+     * @return initDastBoard atribute.
+     */
+    public Dashboard getDastBoard() {
+        return initDastBoard;
     }
 
 }
