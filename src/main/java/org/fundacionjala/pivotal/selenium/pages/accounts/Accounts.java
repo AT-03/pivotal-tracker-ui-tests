@@ -70,7 +70,7 @@ public class Accounts extends AbstractBasePage {
      */
     public void deleteAllAccounts() {
         Navigator.goToAccount().getManageAccountButtonList().stream()
-                .filter(element -> MANAGE_ACCOUNT.equals(element.getText()))
+                .filter(element -> MANAGE_ACCOUNT.equalsIgnoreCase(element.getText()))
                 .forEach(this::deleteAccount);
     }
 

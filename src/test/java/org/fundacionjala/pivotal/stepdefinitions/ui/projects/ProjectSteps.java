@@ -26,6 +26,7 @@ public class ProjectSteps {
      */
     @When("^I added a new project$")
     public void iAddedANewProject(final Map<ProjectFormSetting, String> newSettingMap) {
+        Navigator.goToDashboard();
         settingMap = newSettingMap;
         Dashboard dashboardPage = new Dashboard();
         ProjectForm projectForm = dashboardPage.clickOnCreateProjectButton();
