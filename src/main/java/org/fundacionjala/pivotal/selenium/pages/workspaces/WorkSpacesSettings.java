@@ -56,6 +56,11 @@ public class WorkSpacesSettings extends AbstractBasePage {
      */
     @FindBy(css = "a.cancel")
     private WebElement cancelDeleteButton;
+    /**
+     * Locator.
+     */
+    @FindBy(css = "div.save_bar span.error_message")
+    private WebElement saveErrorMessage;
 
     /**
      * Update worksapace name.
@@ -76,11 +81,19 @@ public class WorkSpacesSettings extends AbstractBasePage {
     /**
      * Verify message.
      *
-     * @param message is the message.
      * @return true if the expected message is equals to displayed message.
      */
-    public boolean verifyChangesSavedMessage(final String message) {
-        return CommonActions.verifyMessages(saveChangesMessage, message);
+    public String verifyChangesSavedMessage() {
+        return saveChangesMessage.getText();
+    }
+
+    /**
+     * Verify message.
+     *
+     * @return true if the expected message is equals to displayed message.
+     */
+    public String verifyErrorSavedMessage() {
+        return saveErrorMessage.getText();
     }
 
     /**

@@ -12,7 +12,7 @@ import org.fundacionjala.pivotal.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.selenium.pages.workspaces.WorkSpacesSettings;
 import org.fundacionjala.pivotal.selenium.pages.workspaces.Workspaces;
 
-import static org.testng.Assert.assertFalse;
+
 import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
 
@@ -79,7 +79,7 @@ public class WorkspacesSteps {
      */
     @Then("^Confirm message should be \"([^\"]*)\"$")
     public void confirmMessageShouldBe(final String message) {
-        assertTrue(workSpacesSettings.verifyChangesSavedMessage(message));
+        assertEquals(message, workSpacesSettings.verifyChangesSavedMessage());
     }
 
     /**
@@ -92,28 +92,6 @@ public class WorkspacesSteps {
         assertTrue(workSpacesSettings.verifyWorkspaceName(workspaceName));
     }
 
-    /**
-     * Method.
-     *
-     * @param workspaceName is the name.
-     */
-    @And("^\"([^\"]*)\" should be displayed$")
-    public void shouldBeDisplayed(final String workspaceName) {
-        Navigator.goToDashboard();
-        dashBoard.clicOnWorkSpaces();
-        assertTrue(workSpaces.verifyIfAworkSpaceExist(workspaceName));
-    }
-
-    /**
-     * Method.
-     *
-     * @param workspaceName is the name.
-     */
-    @And("^\"([^\"]*)\" should not be displayed$")
-    public void shouldNotBeDisplayed(final String workspaceName) {
-        dashBoard.clicOnWorkSpaces();
-        //missing the assertions
-    }
 
     /**
      * Method.
@@ -138,26 +116,6 @@ public class WorkspacesSteps {
         assertEquals(dashBoard.verifyDeletionMessage(), message);
     }
 
-    /**
-     * Method.
-     *
-     * @param errorMessage the error message.
-     */
-    @Then("^Error message above should be \"([^\"]*)\"$")
-    public void errorMessageAboveShouldBe(final String errorMessage) {
-        workSpaces.verifySameNameWorkspaceName(errorMessage);
-    }
-
-    /**
-     * Method.
-     *
-     * @param errorMessage is the error message.
-     */
-    @And("^Error message below shoud be \"([^\"]*)\"$")
-    public void errorMessageBelowShoudBe(final String errorMessage) {
-        assertFalse(workSpacesSettings.verifyChangesSavedMessage(errorMessage));
-        Navigator.goToDashboard();
-    }
 
     /**
      * Method.
