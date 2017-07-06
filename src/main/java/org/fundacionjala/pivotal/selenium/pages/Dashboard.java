@@ -1,6 +1,7 @@
 package org.fundacionjala.pivotal.selenium.pages;
 
 import org.fundacionjala.pivotal.selenium.pages.common.CommonActions;
+import org.fundacionjala.pivotal.selenium.pages.common.Navigator;
 import org.fundacionjala.pivotal.selenium.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.selenium.pages.stories.Story;
 import org.fundacionjala.pivotal.selenium.pages.stories.StoryDashboard;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
+
 
 /**
  * Created by Administrator on 6/14/2017.
@@ -96,6 +98,7 @@ public class Dashboard extends AbstractBasePage {
      * Click on workspaces.
      */
     public void clicOnWorkSpaces() {
+        Navigator.goToDashboard();
         CommonActions.selectAnElement(workSpacesLink, "Workspaces").click();
     }
 

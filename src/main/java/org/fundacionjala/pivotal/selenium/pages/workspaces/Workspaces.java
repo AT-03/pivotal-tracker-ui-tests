@@ -61,7 +61,7 @@ public class Workspaces extends AbstractBasePage {
     /**
      * Locator.
      */
-    @FindBy(css = ".tc-form__input--error-message>span")
+    @FindBy(xpath = "//span[text()='The workspace name you entered is already taken.']")
     private WebElement workspaceNameisTakenMessage;
 
     /**

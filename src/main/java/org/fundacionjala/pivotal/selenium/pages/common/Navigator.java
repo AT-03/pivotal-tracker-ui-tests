@@ -1,5 +1,6 @@
 package org.fundacionjala.pivotal.selenium.pages.common;
 
+
 import org.fundacionjala.pivotal.selenium.browser.DriverManager;
 import org.fundacionjala.pivotal.selenium.pages.accounts.Accounts;
 import org.fundacionjala.pivotal.selenium.pages.menu.ToolBars;
