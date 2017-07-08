@@ -27,7 +27,7 @@ public class SettingAccount extends AbstractBasePage {
     /**
      * This method is clicking on the "Delete Account" link.
      */
-    void clickDeleteAccountLink() {
+    public void clickDeleteAccountLink() {
         CommonActions.clickElement(deleteAccountLink);
         clickOKAlertMessage();
     }

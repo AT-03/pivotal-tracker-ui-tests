@@ -110,15 +110,16 @@ public class ProjectSteps {
     /**
      * @return projectSettings atribute.
      */
-    public ProjectSettings getProjectSettings() {
+    ProjectSettings getProjectSettings() {
         return projectSettings;
     }
 
     /**
      * @return initDastBoard atribute.
      */
-    public Dashboard getDastBoard() {
+    Dashboard getDastBoard() {
         return initDastBoard;
     }
+
 
 }
