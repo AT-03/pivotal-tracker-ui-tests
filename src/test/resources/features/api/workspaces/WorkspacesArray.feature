@@ -21,10 +21,10 @@ Feature: WorkspacesArray
   Scenario: The workspace should not be created with same name.
 
     When I request "POST" "/my/workspaces" with:
-      | name        | Workspacesfull              |
+      | name | Workspacesfull |
     And I stored as [Workspace1]
     And I request "POST" "/my/workspaces" with:
-      | name        | Workspacesfull              |
+      | name        | Workspacesfull          |
       | project_ids | Project1.id,Project2.id |
 
     Then I expect status code 400
@@ -35,11 +35,3 @@ Feature: WorkspacesArray
       | project_ids | project1.id,project2.id |
     Then I expect status code 400
 
-  @deleteProject @deleteWorkspace
-  Scenario: Create a workspace with array of project.
-
-    When I request "POST" "/my/workspaces" with:
-      | name        | Workspaces123          |
-      | project_ids |[Project1.id],[Project2.id] |
-    Then I expect status code 200
-    And I stored as [Workspace1]
