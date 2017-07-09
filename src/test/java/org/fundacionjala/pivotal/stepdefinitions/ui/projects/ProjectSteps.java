@@ -74,6 +74,7 @@ public class ProjectSteps {
      */
     @When("^I delete \"([^\"]*)\"$")
     public void iDelete(final String name) {
+        Navigator.goToDashboard();
         initDastBoard.searchForAProject(name);
         initDastBoard.clickOnProjectSettingButton();
         projectSettings.clickOnDeleteLink();
@@ -86,12 +87,13 @@ public class ProjectSteps {
      */
     @When("^I update \"([^\"]*)\" with \"([^\"]*)\":$")
     public void iUpdateWith(final String name1, final String name2) {
+        Navigator.goToDashboard();
         initDastBoard.searchForAProject(name1);
         initDastBoard.clickOnProjectSettingButton();
         projectSettings.updateProjectName(name2);
         projectSettings.setProjectDescription(name2);
         projectSettings.clickOnSaveProjectButton();
-        projectSettings.clickonGotoHome();
+        Navigator.goToDashboard();
     }
 
     /**
@@ -100,11 +102,12 @@ public class ProjectSteps {
      */
     @When("^I \"([^\"]*)\" the \"([^\"]*)\"$")
     public void iThe(final String action, final String name) {
+        Navigator.goToDashboard();
         initDastBoard.searchForAProject(name);
         initDastBoard.clickOnProjectSettingButton();
         projectSettings.clickOnArchive();
         projectSettings.clickOnConfirmArchive();
-        projectSettings.clickonGotoHome();
+
     }
 
     /**

@@ -22,6 +22,7 @@ public class ProjectAssertions {
     private Map<ProjectFormSetting, String> settingMap;
 
     private ProjectSteps projectSteps1;
+
     /**
      * Constructor where initialize the values.
      *
@@ -88,7 +89,6 @@ public class ProjectAssertions {
     }
 
 
-
     /**
      * @param message verify the message is correct.
      */
@@ -106,6 +106,7 @@ public class ProjectAssertions {
         if ("Project Archived".equals(message)) {
             assertEquals(projectSteps1.getDastBoard().verifyArchive(), message);
         }
-}
+    }
+
 
 }

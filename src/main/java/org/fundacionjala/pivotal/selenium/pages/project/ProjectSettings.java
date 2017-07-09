@@ -116,11 +116,6 @@ public class ProjectSettings extends AbstractBasePage {
     @FindBy(linkText = "nofollow")
     @CacheLookup
     private WebElement unarchiveButton;
-    /**
-     * WebElement for go to dashboard page.
-     */
-    @FindBy(css = "[aria-label='Dashboard']")
-    private WebElement gotoHome;
 
     /**
      * Locate WebElement.
@@ -262,13 +257,6 @@ public class ProjectSettings extends AbstractBasePage {
      */
     public void clickOnUnarchive() {
         CommonActions.clickOnaHiddenElement(unarchiveButton);
-    }
-
-    /**
-     * Click go to dashboard page.
-     */
-    public void clickonGotoHome() {
-        CommonActions.clickOnaHiddenElement(gotoHome);
     }
 
     /**

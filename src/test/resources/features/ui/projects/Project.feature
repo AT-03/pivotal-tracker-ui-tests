@@ -2,13 +2,13 @@ Feature: project delete archive and unarchive
 
   Background:
     Given I request "POST" "/projects" with:
-      | name | project255511234564 |
+  | name | project255511234564 |
     And I stored as [project1]
 
   @gotodasboard @login
   Scenario: Delete a project
     When I delete "project1"
-    Then Message should be "project255511234564 was successfully deleted."
+    Then Message should be "project123456 was successfully deleted."
 
   @deleteProject @goToDashboard @login
   Scenario: update name of project

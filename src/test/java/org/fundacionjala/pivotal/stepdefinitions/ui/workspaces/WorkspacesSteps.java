@@ -106,16 +106,6 @@ public class WorkspacesSteps {
         workSpacesSettings.clickOnConfirmDeleteButton();
     }
 
-    /**
-     * Method.
-     *
-     * @param message is the name.
-     */
-    @Then("^Message should be \"([^\"]*)\"$")
-    public void messageShouldBe(final String message) {
-        assertEquals(dashBoard.verifyDeletionMessage(), message);
-    }
-
 
     /**
      * Method.
